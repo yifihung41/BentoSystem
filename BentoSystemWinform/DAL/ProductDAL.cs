@@ -42,23 +42,68 @@ namespace BentoSystemWinform.DAL
 			return list; // 修正：確保方法返回清單
 		}
 
-		//傳入ProductModel物件，將資料寫入資料庫
-		public void InsertProduct(ProductModel product)
+		//新增商品
+		public int InsertProduct(ProductModel product)
 		{
+			string sql = @"INSERT INTO Product_LBSMS
+                       (ProductName, ProductPrice, StockQuantity, IsOutOfStock, ProductDesc, ImagePath)
+                       VALUES
+                       (@ProductName, @ProductPrice, @StockQuantity, @IsOutOfStock, @ProductDesc, @ImagePath)";
+
 			using (SqlConnection conn = new SqlConnection(connectionString))
+			using (SqlCommand cmd = new SqlCommand(sql, conn))
 			{
-				string sql = @"INSERT INTO Product_LBSMS 
-        (ProductName, ProductPrice, StockQuantity, IsOutOfStock, ProductDesc, ImagePath)
-        VALUES (@Name, @Price, @Stock, @IsOut, @Desc, @ImagePath)";
-				SqlCommand cmd = new SqlCommand(sql, conn);
-				cmd.Parameters.AddWithValue("@Name", product.ProductName);
-				cmd.Parameters.AddWithValue("@Price", product.ProductPrice);
-				cmd.Parameters.AddWithValue("@Stock", product.StockQuantity);
-				cmd.Parameters.AddWithValue("@IsOut", product.IsOutofstock);
-				cmd.Parameters.AddWithValue("@Desc", product.ProductDesc);
-				cmd.Parameters.AddWithValue("@ImagePath", product.ImagePath ?? (object)DBNull.Value);
+				cmd.Parameters.AddWithValue("@ProductName", product.ProductName);
+				cmd.Parameters.AddWithValue("@ProductPrice", product.ProductPrice);
+				cmd.Parameters.AddWithValue("@StockQuantity", product.StockQuantity);
+				cmd.Parameters.AddWithValue("@IsOutOfStock", product.IsOutofstock);
+				cmd.Parameters.AddWithValue("@ProductDesc", product.ProductDesc ?? "");
+				cmd.Parameters.AddWithValue("@ImagePath", product.ImagePath ?? "");
+
 				conn.Open();
-				cmd.ExecuteNonQuery();
+				return cmd.ExecuteNonQuery();
+			}
+		}
+
+		// 修改商品
+		public int UpdateProduct(ProductModel product)
+		{
+			string sql = @"UPDATE Product_LBSMS SET
+                       ProductName=@ProductName,
+                       ProductPrice=@ProductPrice,
+                       StockQuantity=@StockQuantity,
+                       IsOutOfStock=@IsOutOfStock,
+                       ProductDesc=@ProductDesc,
+                       ImagePath=@ImagePath
+                       WHERE ProductId=@ProductId";
+
+			using (SqlConnection conn = new SqlConnection(connectionString))
+			using (SqlCommand cmd = new SqlCommand(sql, conn))
+			{
+				cmd.Parameters.AddWithValue("@ProductName", product.ProductName);
+				cmd.Parameters.AddWithValue("@ProductPrice", product.ProductPrice);
+				cmd.Parameters.AddWithValue("@StockQuantity", product.StockQuantity);
+				cmd.Parameters.AddWithValue("@IsOutOfStock", product.IsOutofstock);
+				cmd.Parameters.AddWithValue("@ProductDesc", product.ProductDesc ?? "");
+				cmd.Parameters.AddWithValue("@ImagePath", product.ImagePath ?? "");
+				cmd.Parameters.AddWithValue("@ProductId", product.ProductId);
+
+				conn.Open();
+				return cmd.ExecuteNonQuery();
+			}
+		}
+
+		// 刪除商品，回傳刪除成功筆數
+		public int DeleteProduct(int productId)
+		{
+			string sql = "DELETE FROM Product_LBSMS WHERE ProductId = @ProductId";
+
+			using (SqlConnection conn = new SqlConnection(connectionString))
+			using (SqlCommand cmd = new SqlCommand(sql, conn))
+			{
+				cmd.Parameters.AddWithValue("@ProductId", productId);
+				conn.Open();
+				return cmd.ExecuteNonQuery();
 			}
 		}
 

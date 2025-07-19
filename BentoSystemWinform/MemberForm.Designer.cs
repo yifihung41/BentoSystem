@@ -47,20 +47,19 @@
 			this.member_LBSMSBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.member_LBSMSTableAdapter = new BentoSystemWinform.BentoSystemDataSet1TableAdapters.Member_LBSMSTableAdapter();
 			this.tableAdapterManager = new BentoSystemWinform.BentoSystemDataSet1TableAdapters.TableAdapterManager();
-			this.btnMemberClear = new System.Windows.Forms.Button();
 			this.btnMemberSave = new System.Windows.Forms.Button();
 			this.btnMemberDelete = new System.Windows.Forms.Button();
 			this.btnMemberUpdate = new System.Windows.Forms.Button();
 			this.btnMemberAdd = new System.Windows.Forms.Button();
 			this.gbMemberDetails = new System.Windows.Forms.GroupBox();
 			this.pictureBox4 = new System.Windows.Forms.PictureBox();
-			this.txtMemberPoints = new System.Windows.Forms.TextBox();
+			this.txtPoints = new System.Windows.Forms.TextBox();
 			this.txtMemberNumber = new System.Windows.Forms.TextBox();
 			this.labelMemberNo = new System.Windows.Forms.Label();
-			this.txtProductDesc = new System.Windows.Forms.TextBox();
+			this.txtMemberAddress = new System.Windows.Forms.TextBox();
 			this.labelMemberAddress = new System.Windows.Forms.Label();
 			this.labelMemberPoints = new System.Windows.Forms.Label();
-			this.txtStockQuantity = new System.Windows.Forms.TextBox();
+			this.txtBirthday = new System.Windows.Forms.TextBox();
 			this.labelMemberBirthday = new System.Windows.Forms.Label();
 			this.txtMemberPhone = new System.Windows.Forms.TextBox();
 			this.LabelMemberPhone = new System.Windows.Forms.Label();
@@ -246,7 +245,9 @@
 			// 
 			// txtMemberSearch
 			// 
+			this.txtMemberSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(254)))), ((int)(((byte)(254)))));
 			this.txtMemberSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.txtMemberSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(140)))), ((int)(((byte)(33)))));
 			this.txtMemberSearch.Location = new System.Drawing.Point(18, 22);
 			this.txtMemberSearch.Name = "txtMemberSearch";
 			this.txtMemberSearch.Size = new System.Drawing.Size(203, 25);
@@ -272,26 +273,13 @@
 			this.tableAdapterManager.Member_LBSMSTableAdapter = this.member_LBSMSTableAdapter;
 			this.tableAdapterManager.UpdateOrder = BentoSystemWinform.BentoSystemDataSet1TableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
 			// 
-			// btnMemberClear
-			// 
-			this.btnMemberClear.BackColor = System.Drawing.Color.Tomato;
-			this.btnMemberClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnMemberClear.Font = new System.Drawing.Font("jf open 粉圓 2.1", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.btnMemberClear.ForeColor = System.Drawing.Color.White;
-			this.btnMemberClear.Location = new System.Drawing.Point(924, 298);
-			this.btnMemberClear.Name = "btnMemberClear";
-			this.btnMemberClear.Size = new System.Drawing.Size(75, 28);
-			this.btnMemberClear.TabIndex = 30;
-			this.btnMemberClear.Text = "清除";
-			this.btnMemberClear.UseVisualStyleBackColor = false;
-			// 
 			// btnMemberSave
 			// 
-			this.btnMemberSave.BackColor = System.Drawing.Color.Tomato;
+			this.btnMemberSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(140)))), ((int)(((byte)(33)))));
 			this.btnMemberSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnMemberSave.Font = new System.Drawing.Font("jf open 粉圓 2.1", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.btnMemberSave.ForeColor = System.Drawing.Color.White;
-			this.btnMemberSave.Location = new System.Drawing.Point(842, 298);
+			this.btnMemberSave.Location = new System.Drawing.Point(924, 298);
 			this.btnMemberSave.Name = "btnMemberSave";
 			this.btnMemberSave.Size = new System.Drawing.Size(75, 28);
 			this.btnMemberSave.TabIndex = 29;
@@ -300,11 +288,11 @@
 			// 
 			// btnMemberDelete
 			// 
-			this.btnMemberDelete.BackColor = System.Drawing.Color.Tomato;
+			this.btnMemberDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(140)))), ((int)(((byte)(33)))));
 			this.btnMemberDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnMemberDelete.Font = new System.Drawing.Font("jf open 粉圓 2.1", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.btnMemberDelete.ForeColor = System.Drawing.Color.White;
-			this.btnMemberDelete.Location = new System.Drawing.Point(761, 298);
+			this.btnMemberDelete.Location = new System.Drawing.Point(838, 298);
 			this.btnMemberDelete.Name = "btnMemberDelete";
 			this.btnMemberDelete.Size = new System.Drawing.Size(75, 28);
 			this.btnMemberDelete.TabIndex = 28;
@@ -313,11 +301,11 @@
 			// 
 			// btnMemberUpdate
 			// 
-			this.btnMemberUpdate.BackColor = System.Drawing.Color.Tomato;
+			this.btnMemberUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(140)))), ((int)(((byte)(33)))));
 			this.btnMemberUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnMemberUpdate.Font = new System.Drawing.Font("jf open 粉圓 2.1", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.btnMemberUpdate.ForeColor = System.Drawing.Color.White;
-			this.btnMemberUpdate.Location = new System.Drawing.Point(680, 298);
+			this.btnMemberUpdate.Location = new System.Drawing.Point(752, 298);
 			this.btnMemberUpdate.Name = "btnMemberUpdate";
 			this.btnMemberUpdate.Size = new System.Drawing.Size(75, 28);
 			this.btnMemberUpdate.TabIndex = 27;
@@ -326,11 +314,11 @@
 			// 
 			// btnMemberAdd
 			// 
-			this.btnMemberAdd.BackColor = System.Drawing.Color.Tomato;
+			this.btnMemberAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(140)))), ((int)(((byte)(33)))));
 			this.btnMemberAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnMemberAdd.Font = new System.Drawing.Font("jf open 粉圓 2.1", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.btnMemberAdd.ForeColor = System.Drawing.Color.White;
-			this.btnMemberAdd.Location = new System.Drawing.Point(599, 298);
+			this.btnMemberAdd.Location = new System.Drawing.Point(666, 298);
 			this.btnMemberAdd.Name = "btnMemberAdd";
 			this.btnMemberAdd.Size = new System.Drawing.Size(75, 28);
 			this.btnMemberAdd.TabIndex = 26;
@@ -340,13 +328,13 @@
 			// gbMemberDetails
 			// 
 			this.gbMemberDetails.Controls.Add(this.pictureBox4);
-			this.gbMemberDetails.Controls.Add(this.txtMemberPoints);
+			this.gbMemberDetails.Controls.Add(this.txtPoints);
 			this.gbMemberDetails.Controls.Add(this.txtMemberNumber);
 			this.gbMemberDetails.Controls.Add(this.labelMemberNo);
-			this.gbMemberDetails.Controls.Add(this.txtProductDesc);
+			this.gbMemberDetails.Controls.Add(this.txtMemberAddress);
 			this.gbMemberDetails.Controls.Add(this.labelMemberAddress);
 			this.gbMemberDetails.Controls.Add(this.labelMemberPoints);
-			this.gbMemberDetails.Controls.Add(this.txtStockQuantity);
+			this.gbMemberDetails.Controls.Add(this.txtBirthday);
 			this.gbMemberDetails.Controls.Add(this.labelMemberBirthday);
 			this.gbMemberDetails.Controls.Add(this.txtMemberPhone);
 			this.gbMemberDetails.Controls.Add(this.LabelMemberPhone);
@@ -370,14 +358,14 @@
 			this.pictureBox4.TabIndex = 27;
 			this.pictureBox4.TabStop = false;
 			// 
-			// txtMemberPoints
+			// txtPoints
 			// 
-			this.txtMemberPoints.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.txtMemberPoints.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(140)))), ((int)(((byte)(33)))));
-			this.txtMemberPoints.Location = new System.Drawing.Point(118, 164);
-			this.txtMemberPoints.Name = "txtMemberPoints";
-			this.txtMemberPoints.Size = new System.Drawing.Size(156, 19);
-			this.txtMemberPoints.TabIndex = 26;
+			this.txtPoints.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.txtPoints.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(140)))), ((int)(((byte)(33)))));
+			this.txtPoints.Location = new System.Drawing.Point(118, 164);
+			this.txtPoints.Name = "txtPoints";
+			this.txtPoints.Size = new System.Drawing.Size(156, 19);
+			this.txtPoints.TabIndex = 26;
 			// 
 			// txtMemberNumber
 			// 
@@ -397,14 +385,14 @@
 			this.labelMemberNo.TabIndex = 24;
 			this.labelMemberNo.Text = "會員編號：";
 			// 
-			// txtProductDesc
+			// txtMemberAddress
 			// 
-			this.txtProductDesc.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.txtProductDesc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(140)))), ((int)(((byte)(33)))));
-			this.txtProductDesc.Location = new System.Drawing.Point(118, 197);
-			this.txtProductDesc.Name = "txtProductDesc";
-			this.txtProductDesc.Size = new System.Drawing.Size(293, 19);
-			this.txtProductDesc.TabIndex = 23;
+			this.txtMemberAddress.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.txtMemberAddress.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(140)))), ((int)(((byte)(33)))));
+			this.txtMemberAddress.Location = new System.Drawing.Point(118, 197);
+			this.txtMemberAddress.Name = "txtMemberAddress";
+			this.txtMemberAddress.Size = new System.Drawing.Size(293, 19);
+			this.txtMemberAddress.TabIndex = 23;
 			// 
 			// labelMemberAddress
 			// 
@@ -424,14 +412,14 @@
 			this.labelMemberPoints.TabIndex = 20;
 			this.labelMemberPoints.Text = "累積點數：";
 			// 
-			// txtStockQuantity
+			// txtBirthday
 			// 
-			this.txtStockQuantity.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.txtStockQuantity.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(140)))), ((int)(((byte)(33)))));
-			this.txtStockQuantity.Location = new System.Drawing.Point(118, 131);
-			this.txtStockQuantity.Name = "txtStockQuantity";
-			this.txtStockQuantity.Size = new System.Drawing.Size(156, 19);
-			this.txtStockQuantity.TabIndex = 19;
+			this.txtBirthday.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.txtBirthday.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(140)))), ((int)(((byte)(33)))));
+			this.txtBirthday.Location = new System.Drawing.Point(118, 131);
+			this.txtBirthday.Name = "txtBirthday";
+			this.txtBirthday.Size = new System.Drawing.Size(156, 19);
+			this.txtBirthday.TabIndex = 19;
 			// 
 			// labelMemberBirthday
 			// 
@@ -497,7 +485,6 @@
 			this.ClientSize = new System.Drawing.Size(1033, 629);
 			this.Controls.Add(this.gbMemberList);
 			this.Controls.Add(this.gbMemberDetails);
-			this.Controls.Add(this.btnMemberClear);
 			this.Controls.Add(this.btnMemberSave);
 			this.Controls.Add(this.btnMemberDelete);
 			this.Controls.Add(this.btnMemberUpdate);
@@ -551,7 +538,6 @@
 		private System.Windows.Forms.BindingSource member_LBSMSBindingSource;
 		private BentoSystemDataSet1TableAdapters.Member_LBSMSTableAdapter member_LBSMSTableAdapter;
 		private BentoSystemDataSet1TableAdapters.TableAdapterManager tableAdapterManager;
-		private System.Windows.Forms.Button btnMemberClear;
 		private System.Windows.Forms.Button btnMemberSave;
 		private System.Windows.Forms.Button btnMemberDelete;
 		private System.Windows.Forms.Button btnMemberUpdate;
@@ -559,16 +545,16 @@
 		private System.Windows.Forms.GroupBox gbMemberDetails;
 		private System.Windows.Forms.TextBox txtMemberNumber;
 		private System.Windows.Forms.Label labelMemberNo;
-		private System.Windows.Forms.TextBox txtProductDesc;
+		private System.Windows.Forms.TextBox txtMemberAddress;
 		private System.Windows.Forms.Label labelMemberAddress;
 		private System.Windows.Forms.Label labelMemberPoints;
-		private System.Windows.Forms.TextBox txtStockQuantity;
+		private System.Windows.Forms.TextBox txtBirthday;
 		private System.Windows.Forms.Label labelMemberBirthday;
 		private System.Windows.Forms.TextBox txtMemberPhone;
 		private System.Windows.Forms.Label LabelMemberPhone;
 		private System.Windows.Forms.TextBox txtMemberName;
 		private System.Windows.Forms.Label lableMemberName;
-		private System.Windows.Forms.TextBox txtMemberPoints;
+		private System.Windows.Forms.TextBox txtPoints;
 		private System.Windows.Forms.PictureBox pictureBox4;
 		private System.Windows.Forms.GroupBox gbMemberList;
 	}

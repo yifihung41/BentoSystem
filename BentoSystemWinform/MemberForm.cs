@@ -121,8 +121,8 @@ namespace BentoSystemWinform
 		{
 			this.Hide();
 			OrderForm of = new OrderForm(LoginEmployee);
-			of.FormClosed += (s, args) => this.Show();
-			of.Show(); // 請確認這裡不要同時用 ShowDialog()
+			of.ShowDialog();  // Modal 顯示
+			this.Show();
 		}
 
 		// 登出按鈕

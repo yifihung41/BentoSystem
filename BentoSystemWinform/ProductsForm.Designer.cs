@@ -30,8 +30,8 @@
 		{
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductsForm));
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.pictureBox2 = new System.Windows.Forms.PictureBox();
 			this.btnLogout = new System.Windows.Forms.Button();
@@ -62,7 +62,6 @@
 			this.btnProductUpdate = new System.Windows.Forms.Button();
 			this.btnProductDelete = new System.Windows.Forms.Button();
 			this.btnProductSave = new System.Windows.Forms.Button();
-			this.btnProductClear = new System.Windows.Forms.Button();
 			this.pictureBox3 = new System.Windows.Forms.PictureBox();
 			this.btnExit = new System.Windows.Forms.Button();
 			this.gbProductList = new System.Windows.Forms.GroupBox();
@@ -234,7 +233,9 @@
 			// 
 			// txtProductSearch
 			// 
+			this.txtProductSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(254)))), ((int)(((byte)(254)))));
 			this.txtProductSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.txtProductSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(140)))), ((int)(((byte)(33)))));
 			this.txtProductSearch.Location = new System.Drawing.Point(18, 22);
 			this.txtProductSearch.Name = "txtProductSearch";
 			this.txtProductSearch.Size = new System.Drawing.Size(203, 25);
@@ -284,7 +285,7 @@
 			// 
 			// btnProductImageUpload
 			// 
-			this.btnProductImageUpload.BackColor = System.Drawing.Color.Tomato;
+			this.btnProductImageUpload.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(140)))), ((int)(((byte)(33)))));
 			this.btnProductImageUpload.FlatAppearance.BorderColor = System.Drawing.Color.White;
 			this.btnProductImageUpload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnProductImageUpload.Font = new System.Drawing.Font("jf open 粉圓 2.1", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
@@ -400,68 +401,59 @@
 			// 
 			// btnProductAdd
 			// 
-			this.btnProductAdd.BackColor = System.Drawing.Color.Tomato;
+			this.btnProductAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(140)))), ((int)(((byte)(33)))));
 			this.btnProductAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnProductAdd.Font = new System.Drawing.Font("jf open 粉圓 2.1", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.btnProductAdd.ForeColor = System.Drawing.Color.White;
-			this.btnProductAdd.Location = new System.Drawing.Point(599, 298);
+			this.btnProductAdd.Location = new System.Drawing.Point(666, 298);
 			this.btnProductAdd.Name = "btnProductAdd";
 			this.btnProductAdd.Size = new System.Drawing.Size(75, 28);
 			this.btnProductAdd.TabIndex = 16;
 			this.btnProductAdd.Text = "新增";
 			this.btnProductAdd.UseVisualStyleBackColor = false;
+			this.btnProductAdd.Click += new System.EventHandler(this.btnProductAdd_Click);
 			// 
 			// btnProductUpdate
 			// 
-			this.btnProductUpdate.BackColor = System.Drawing.Color.Tomato;
+			this.btnProductUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(140)))), ((int)(((byte)(33)))));
 			this.btnProductUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnProductUpdate.Font = new System.Drawing.Font("jf open 粉圓 2.1", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.btnProductUpdate.ForeColor = System.Drawing.Color.White;
-			this.btnProductUpdate.Location = new System.Drawing.Point(680, 298);
+			this.btnProductUpdate.Location = new System.Drawing.Point(752, 298);
 			this.btnProductUpdate.Name = "btnProductUpdate";
 			this.btnProductUpdate.Size = new System.Drawing.Size(75, 28);
 			this.btnProductUpdate.TabIndex = 17;
 			this.btnProductUpdate.Text = "修改";
 			this.btnProductUpdate.UseVisualStyleBackColor = false;
+			this.btnProductUpdate.Click += new System.EventHandler(this.btnProductUpdate_Click);
 			// 
 			// btnProductDelete
 			// 
-			this.btnProductDelete.BackColor = System.Drawing.Color.Tomato;
+			this.btnProductDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(140)))), ((int)(((byte)(33)))));
 			this.btnProductDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnProductDelete.Font = new System.Drawing.Font("jf open 粉圓 2.1", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.btnProductDelete.ForeColor = System.Drawing.Color.White;
-			this.btnProductDelete.Location = new System.Drawing.Point(761, 298);
+			this.btnProductDelete.Location = new System.Drawing.Point(838, 298);
 			this.btnProductDelete.Name = "btnProductDelete";
 			this.btnProductDelete.Size = new System.Drawing.Size(75, 28);
 			this.btnProductDelete.TabIndex = 18;
 			this.btnProductDelete.Text = "刪除";
 			this.btnProductDelete.UseVisualStyleBackColor = false;
+			this.btnProductDelete.Click += new System.EventHandler(this.btnProductDelete_Click);
 			// 
 			// btnProductSave
 			// 
-			this.btnProductSave.BackColor = System.Drawing.Color.Tomato;
+			this.btnProductSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(140)))), ((int)(((byte)(33)))));
 			this.btnProductSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnProductSave.Font = new System.Drawing.Font("jf open 粉圓 2.1", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.btnProductSave.ForeColor = System.Drawing.Color.White;
-			this.btnProductSave.Location = new System.Drawing.Point(842, 298);
+			this.btnProductSave.Location = new System.Drawing.Point(924, 298);
 			this.btnProductSave.Name = "btnProductSave";
 			this.btnProductSave.Size = new System.Drawing.Size(75, 28);
 			this.btnProductSave.TabIndex = 19;
 			this.btnProductSave.Text = "儲存";
 			this.btnProductSave.UseVisualStyleBackColor = false;
-			// 
-			// btnProductClear
-			// 
-			this.btnProductClear.BackColor = System.Drawing.Color.Tomato;
-			this.btnProductClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnProductClear.Font = new System.Drawing.Font("jf open 粉圓 2.1", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.btnProductClear.ForeColor = System.Drawing.Color.White;
-			this.btnProductClear.Location = new System.Drawing.Point(924, 298);
-			this.btnProductClear.Name = "btnProductClear";
-			this.btnProductClear.Size = new System.Drawing.Size(75, 28);
-			this.btnProductClear.TabIndex = 20;
-			this.btnProductClear.Text = "清除";
-			this.btnProductClear.UseVisualStyleBackColor = false;
+			this.btnProductSave.Click += new System.EventHandler(this.btnProductSave_Click);
 			// 
 			// pictureBox3
 			// 
@@ -498,17 +490,17 @@
 			// 
 			// dgvProduct
 			// 
-			dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-			this.dgvProduct.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
-			dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle8.Font = new System.Drawing.Font("jf open 粉圓 2.1", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle8.NullValue = "無";
-			dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dgvProduct.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+			dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+			this.dgvProduct.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+			dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle6.Font = new System.Drawing.Font("jf open 粉圓 2.1", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle6.NullValue = "無";
+			dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dgvProduct.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
 			this.dgvProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgvProduct.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ProductId,
@@ -606,7 +598,6 @@
 			this.ClientSize = new System.Drawing.Size(1033, 629);
 			this.Controls.Add(this.gbProductList);
 			this.Controls.Add(this.pictureBox3);
-			this.Controls.Add(this.btnProductClear);
 			this.Controls.Add(this.btnProductSave);
 			this.Controls.Add(this.btnProductDelete);
 			this.Controls.Add(this.btnProductUpdate);
@@ -674,7 +665,6 @@
 		private System.Windows.Forms.Button btnProductUpdate;
 		private System.Windows.Forms.Button btnProductDelete;
 		private System.Windows.Forms.Button btnProductSave;
-		private System.Windows.Forms.Button btnProductClear;
 		private System.Windows.Forms.PictureBox pictureBox3;
 		private System.Windows.Forms.PictureBox pictureBox2;
 		private System.Windows.Forms.TextBox txtProductId;

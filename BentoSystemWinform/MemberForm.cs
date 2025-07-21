@@ -164,21 +164,158 @@ namespace BentoSystemWinform
 		}
 
 
+		private MemberBLL memberBLL = new MemberBLL();
+
+		private List<MemberModel> currentmemberList = new List<MemberModel>();
+
 		//載入事件
 		private void MemberForm_Load(object sender, EventArgs e)
 		{
-
+			dgvMember.CellClick += dgvMember_CellClick;
+			LoadMemberList();
 		}
 
 
-		private void txtMemberName_TextChanged(object sender, EventArgs e)
+
+		// 重新載入dgv列表
+		private void LoadMemberList()
 		{
+			dgvMember.AutoGenerateColumns = false;
+			dgvMember.DataSource = memberBLL.GetMemberList();
+		}
+
+		// 顯示會員詳細資料
+		private void DisplayMemberDetails(MemberModel member)
+		{
+			if (member == null) return;
+
+			txtMemberNumber.Text = member.MemberId.ToString();
+			txtMemberName.Text = member.MemberName;
+			txtMemberPhone.Text = member.MemberPhone;
+			txtBirthday.Text = member.Birthday;
+			txtPoints.Text = member.Points.ToString();
+			txtMemberAddress.Text = member.MemberAddress;
+		}
+
+		// 會員清單點選事件
+		private void dgvMember_CellClick(object sender, DataGridViewCellEventArgs e)
+		{
+			if (e.RowIndex >= 0) // 防止點擊標題列
+			{
+				// 取出該行綁定的資料物件
+				MemberModel selectedMember = (MemberModel)dgvMember.Rows[e.RowIndex].DataBoundItem;
+
+				if (selectedMember != null)
+				{
+					DisplayMemberDetails(selectedMember);
+				}
+			}
+		}
+
+		// 搜尋按鈕
+		private void btnMemberSearch_Click(object sender, EventArgs e)
+		{
+			string keyword = txtMemberSearch.Text.Trim();
+			var member = memberBLL.SearchMemberByName(keyword);
+			if (member.Count > 0)
+			{
+				DisplayMemberDetails(member[0]);
+			}
+			else
+			{
+				MessageBox.Show("找不到此會員。");
+			}
+		}
+
+		// 新增按鈕，清空輸入欄位
+		private void btnMemberAdd_Click(object sender, EventArgs e)
+		{
+			ClearInputFields();
+		}
+
+		private void ClearInputFields()
+		{
+			txtMemberNumber.Text = "";
+			txtMemberName.Text = "";
+			txtMemberPhone.Text = "";
+			txtBirthday.Text = "";
+			txtPoints.Text = "";
+			txtMemberAddress.Text = "";
+		}
+
+		// 修改按鈕，提示選擇會員
+		private void btnMemberUpdate_Click(object sender, EventArgs e)
+		{
+			if (string.IsNullOrEmpty(txtMemberNumber.Text))
+			{
+				MessageBox.Show("請先從列表中選擇一筆會員資料進行修改");
+				return;
+			}
+
+			// 讓使用者知道可以開始改資料
+			MessageBox.Show("請修改下方欄位，完成後請按儲存");
+
+			// 啟用欄位編輯（視需要而定）
+			txtMemberName.Enabled = true;
+			txtMemberPhone.Enabled = true;
+			txtMemberAddress.Enabled = true;
+			txtBirthday.Enabled = true;
+			txtPoints.Enabled = true;
 
 		}
 
-		private void lableMemberName_Click(object sender, EventArgs e)
+		// 儲存按鈕（新增或修改都在這裡判斷）
+		private void btnMemberSave_Click(object sender, EventArgs e)
 		{
+			if (string.IsNullOrEmpty(txtMemberName.Text))
+			{
+				MessageBox.Show("會員姓名不可為空");
+				return;
+			}
 
+			MemberModel member = new MemberModel
+			{
+				MemberName = txtMemberName.Text.Trim(),
+				MemberPhone = txtMemberPhone.Text.Trim(),
+				Birthday = txtBirthday.Text.Trim(),
+				Points = int.TryParse(txtPoints.Text.Trim(), out int pts) ? pts : 0,
+				MemberAddress = txtMemberAddress.Text.Trim()
+			};
+
+			if (string.IsNullOrEmpty(txtMemberNumber.Text))  // 新增
+			{
+				memberBLL.InsertMember(member);
+				MessageBox.Show("新增成功！");
+			}
+			else  // 修改
+			{
+				member.MemberId = int.Parse(txtMemberNumber.Text);
+				memberBLL.UpdateMember(member);
+				MessageBox.Show("修改成功！");
+			}
+
+			LoadMemberList();
+			ClearInputFields();
+		}
+
+		// 刪除按鈕
+		private void btnMemberDelete_Click(object sender, EventArgs e)
+		{
+			if (int.TryParse(txtMemberNumber.Text, out int memberId))
+			{
+				var confirm = MessageBox.Show("確定要刪除此會員嗎？", "刪除確認", MessageBoxButtons.YesNo);
+				if (confirm == DialogResult.Yes)
+				{
+					memberBLL.DeleteMember(memberId);
+					MessageBox.Show("刪除成功！");
+					LoadMemberList();
+					ClearInputFields();
+				}
+			}
+			else
+			{
+				MessageBox.Show("請先選擇要刪除的會員！");
+			}
 		}
 	}
 }

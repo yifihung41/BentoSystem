@@ -1,4 +1,6 @@
-﻿namespace BentoSystemWinform
+﻿using System;
+
+namespace BentoSystemWinform
 {
 	partial class MemberForm
 	{
@@ -66,6 +68,13 @@
 			this.txtMemberName = new System.Windows.Forms.TextBox();
 			this.lableMemberName = new System.Windows.Forms.Label();
 			this.gbMemberList = new System.Windows.Forms.GroupBox();
+			this.dgvMember = new System.Windows.Forms.DataGridView();
+			this.MemberId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.MemberName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.MemberPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Birthday = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Points = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.MemberAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -75,6 +84,8 @@
 			((System.ComponentModel.ISupportInitialize)(this.member_LBSMSBindingSource)).BeginInit();
 			this.gbMemberDetails.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+			this.gbMemberList.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dgvMember)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// panel1
@@ -242,6 +253,7 @@
 			this.btnMemberSearch.TabIndex = 14;
 			this.btnMemberSearch.Text = " ";
 			this.btnMemberSearch.UseVisualStyleBackColor = true;
+			this.btnMemberSearch.Click += new System.EventHandler(this.btnMemberSearch_Click);
 			// 
 			// txtMemberSearch
 			// 
@@ -285,6 +297,7 @@
 			this.btnMemberSave.TabIndex = 29;
 			this.btnMemberSave.Text = "儲存";
 			this.btnMemberSave.UseVisualStyleBackColor = false;
+			this.btnMemberSave.Click += new System.EventHandler(this.btnMemberSave_Click);
 			// 
 			// btnMemberDelete
 			// 
@@ -298,6 +311,7 @@
 			this.btnMemberDelete.TabIndex = 28;
 			this.btnMemberDelete.Text = "刪除";
 			this.btnMemberDelete.UseVisualStyleBackColor = false;
+			this.btnMemberDelete.Click += new System.EventHandler(this.btnMemberDelete_Click);
 			// 
 			// btnMemberUpdate
 			// 
@@ -311,6 +325,7 @@
 			this.btnMemberUpdate.TabIndex = 27;
 			this.btnMemberUpdate.Text = "修改";
 			this.btnMemberUpdate.UseVisualStyleBackColor = false;
+			this.btnMemberUpdate.Click += new System.EventHandler(this.btnMemberUpdate_Click);
 			// 
 			// btnMemberAdd
 			// 
@@ -324,6 +339,7 @@
 			this.btnMemberAdd.TabIndex = 26;
 			this.btnMemberAdd.Text = "新增";
 			this.btnMemberAdd.UseVisualStyleBackColor = false;
+			this.btnMemberAdd.Click += new System.EventHandler(this.btnMemberAdd_Click);
 			// 
 			// gbMemberDetails
 			// 
@@ -456,7 +472,6 @@
 			this.txtMemberName.Name = "txtMemberName";
 			this.txtMemberName.Size = new System.Drawing.Size(156, 19);
 			this.txtMemberName.TabIndex = 15;
-			this.txtMemberName.TextChanged += new System.EventHandler(this.txtMemberName_TextChanged);
 			// 
 			// lableMemberName
 			// 
@@ -470,6 +485,7 @@
 			// 
 			// gbMemberList
 			// 
+			this.gbMemberList.Controls.Add(this.dgvMember);
 			this.gbMemberList.Location = new System.Drawing.Point(262, 91);
 			this.gbMemberList.Name = "gbMemberList";
 			this.gbMemberList.Size = new System.Drawing.Size(737, 200);
@@ -477,8 +493,86 @@
 			this.gbMemberList.TabStop = false;
 			this.gbMemberList.Text = "會員清單";
 			// 
+			// dgvMember
+			// 
+			this.dgvMember.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dgvMember.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.MemberId,
+            this.MemberName,
+            this.MemberPhone,
+            this.Birthday,
+            this.Points,
+            this.MemberAddress});
+			this.dgvMember.Location = new System.Drawing.Point(15, 21);
+			this.dgvMember.Name = "dgvMember";
+			this.dgvMember.RowTemplate.Height = 24;
+			this.dgvMember.Size = new System.Drawing.Size(705, 176);
+			this.dgvMember.TabIndex = 0;
+			this.dgvMember.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMember_CellClick);
+			// 
+			// MemberId
+			// 
+			this.MemberId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+			this.MemberId.DataPropertyName = "MemberId";
+			this.MemberId.HeaderText = "編號";
+			this.MemberId.Name = "MemberId";
+			this.MemberId.ReadOnly = true;
+			this.MemberId.ToolTipText = "編號";
+			this.MemberId.Width = 63;
+			// 
+			// MemberName
+			// 
+			this.MemberName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+			this.MemberName.DataPropertyName = "MemberName";
+			this.MemberName.HeaderText = "姓名";
+			this.MemberName.Name = "MemberName";
+			this.MemberName.ReadOnly = true;
+			this.MemberName.ToolTipText = "姓名";
+			this.MemberName.Width = 63;
+			// 
+			// MemberPhone
+			// 
+			this.MemberPhone.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+			this.MemberPhone.DataPropertyName = "MemberPhone";
+			this.MemberPhone.HeaderText = "電話";
+			this.MemberPhone.Name = "MemberPhone";
+			this.MemberPhone.ReadOnly = true;
+			this.MemberPhone.ToolTipText = "電話";
+			this.MemberPhone.Width = 63;
+			// 
+			// Birthday
+			// 
+			this.Birthday.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+			this.Birthday.DataPropertyName = "Birthday";
+			this.Birthday.HeaderText = "生日";
+			this.Birthday.Name = "Birthday";
+			this.Birthday.ReadOnly = true;
+			this.Birthday.ToolTipText = "生日";
+			this.Birthday.Width = 63;
+			// 
+			// Points
+			// 
+			this.Points.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+			this.Points.DataPropertyName = "Points";
+			this.Points.HeaderText = "點數";
+			this.Points.Name = "Points";
+			this.Points.ReadOnly = true;
+			this.Points.ToolTipText = "點數";
+			this.Points.Width = 63;
+			// 
+			// MemberAddress
+			// 
+			this.MemberAddress.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+			this.MemberAddress.DataPropertyName = "MemberAddress";
+			this.MemberAddress.HeaderText = "地址";
+			this.MemberAddress.Name = "MemberAddress";
+			this.MemberAddress.ReadOnly = true;
+			this.MemberAddress.ToolTipText = "地址";
+			this.MemberAddress.Width = 63;
+			// 
 			// MemberForm
 			// 
+			this.AcceptButton = this.btnMemberSearch;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 17F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(254)))), ((int)(((byte)(254)))));
@@ -515,9 +609,18 @@
 			this.gbMemberDetails.ResumeLayout(false);
 			this.gbMemberDetails.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+			this.gbMemberList.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.dgvMember)).EndInit();
 			this.ResumeLayout(false);
 
 		}
+
+		private void lableMemberName_Click(object sender, EventArgs e)
+		{
+			throw new NotImplementedException();
+		}
+
+		
 
 		#endregion
 
@@ -557,5 +660,12 @@
 		private System.Windows.Forms.TextBox txtPoints;
 		private System.Windows.Forms.PictureBox pictureBox4;
 		private System.Windows.Forms.GroupBox gbMemberList;
+		private System.Windows.Forms.DataGridView dgvMember;
+		private System.Windows.Forms.DataGridViewTextBoxColumn MemberId;
+		private System.Windows.Forms.DataGridViewTextBoxColumn MemberName;
+		private System.Windows.Forms.DataGridViewTextBoxColumn MemberPhone;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Birthday;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Points;
+		private System.Windows.Forms.DataGridViewTextBoxColumn MemberAddress;
 	}
 }

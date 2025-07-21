@@ -13,6 +13,8 @@ namespace BentoSystemWinform.DAL
 	public class ProductDAL
 	{
 		private string connectionString = @"Data Source = desktop-paksetb\sqlexpress;Database = BentoSystem;Trusted_Connection = True;";
+
+		//取得所有商品資料
 		public List<ProductModel> GetAllProducts() 
 		{ 
 			List<ProductModel> list = new List<ProductModel>();
@@ -93,7 +95,7 @@ namespace BentoSystemWinform.DAL
 			}
 		}
 
-		// 刪除商品，回傳刪除成功筆數
+		// 刪除商品
 		public int DeleteProduct(int productId)
 		{
 			string sql = "DELETE FROM Product_LBSMS WHERE ProductId = @ProductId";
@@ -107,7 +109,7 @@ namespace BentoSystemWinform.DAL
 			}
 		}
 
-		//用關鍵字搜尋餐點名稱
+		//搜尋商品
 		public ProductModel GetProductByName(string keyword)
 		{
 			using (SqlConnection conn = new SqlConnection(connectionString))

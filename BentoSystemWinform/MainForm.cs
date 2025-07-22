@@ -131,68 +131,52 @@ namespace BentoSystemWinform
 		// 側邊欄產品管理介面按鈕
 		private void btnProducts_Click(object sender, EventArgs e)
 		{
-			this.Hide();
-			ProductsForm pf = new ProductsForm(LoginEmployee); // 傳遞 LoginEmployee 作為參數
-			pf.FormClosed += (s, args) => this.Show(); // 正確顯示主視窗
-			pf.Show();
+			FormSwitcher.SafeSwitchTo(this, new ProductsForm(LoginEmployee));
 		}
 
 		// 側邊欄會員管理介面按鈕
 		private void btnMember_Click(object sender, EventArgs e)
 		{
-			this.Hide();
-			MemberForm mf = new MemberForm(LoginEmployee); // 傳遞 LoginEmployee 作為參數
-			mf.FormClosed += (s, args) => this.Show();
-			mf.Show();
+			FormSwitcher.SafeSwitchTo(this, new MemberForm(LoginEmployee));
 		}
 
 		// 側邊欄訂單管理介面按鈕
 		private void btnOrders_Click(object sender, EventArgs e)
 		{
-			this.Hide();  // 只隱藏，不關閉
-			using (OrderForm of = new OrderForm(LoginEmployee))
-			{
-				of.ShowDialog();  // Modal 視窗
-			}
-			this.Close(); 
+			FormSwitcher.SafeSwitchTo(this, new OrderForm(LoginEmployee));
 		}
 
 		// 登出按鈕
 		private void btnLogout_Click(object sender, EventArgs e)
 		{
-			this.Hide();                         // 先隱藏目前畫面
-
-			LoginForm loginForm = new LoginForm();
-			DialogResult result = loginForm.ShowDialog(); // 讓使用者重新登入
-
-			if (result == DialogResult.OK)
+			var confirm = MessageBox.Show("確定要登出嗎？", "登出確認", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+			if (confirm == DialogResult.Yes)
 			{
-				// 重新取得新登入者的資訊
-				this.LoginEmployee = loginForm.LoginEmployee;
-
-				MainForm mainForm = new MainForm(this.LoginEmployee);
-				mainForm.Show(); // 顯示自己（原本主畫面）
-			}
-			else
-			{
-				// 使用者關閉登入畫面、或取消，整個關掉
-				this.Close();
+				FormSwitcher.SafeLogout(this);
 			}
 		}
 
 		// 關閉按鈕叫出確認視窗
 		private void btnExit_Click(object sender, EventArgs e)
 		{
-			ExitConfirmForm exitConfirmForm = new ExitConfirmForm();
-			DialogResult result = exitConfirmForm.ShowDialog();
+			//ExitConfirmForm exitConfirmForm = new ExitConfirmForm();
+			//DialogResult result = exitConfirmForm.ShowDialog();
 
-			if (result == DialogResult.OK)
+			//if (result == DialogResult.OK)
+			//{
+			//	Application.Exit(); // 關閉整個程式
+			//}
+			//else if (result == DialogResult.Cancel)
+			//{
+			//	exitConfirmForm.Close(); // 只關閉此小視窗，繼續使用主視窗
+			//}
+			using (ExitConfirmForm exitConfirmForm = new ExitConfirmForm())
 			{
-				Application.Exit(); // 關閉整個程式
-			}
-			else if (result == DialogResult.Cancel)
-			{
-				exitConfirmForm.Close(); // 只關閉此小視窗，繼續使用主視窗
+				if (exitConfirmForm.ShowDialog() == DialogResult.OK)
+				{
+					Application.Exit(); // 使用者按確認，立即關閉程式
+				}
+				// 取消或關閉視窗，這裡不做事，繼續留在主視窗
 			}
 		}
 

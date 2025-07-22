@@ -20,7 +20,7 @@ namespace BentoSystemWinform
 		private decimal _total;
 		private bool _allowSubmit;
 
-		public OrderLastCheckForm(List<OrderItemTempModel> orderItems, decimal total, bool allowSubmit = true)
+		public OrderLastCheckForm(List<OrderItemTempModel> orderItems, decimal total, string MemberName, string MemberPhone, string OrderType, DateTime OrderTime, int pointEarned, int Points, bool allowSubmit = true)
 		{
 			InitializeComponent();
 
@@ -31,6 +31,14 @@ namespace BentoSystemWinform
 			SetupDataGridView();
 			BindData();
 			ConfigureButtons();
+
+			// ✅ 顯示基本資訊：會員資料、訂購方式、時間、點數
+			lblCustomerName.Text = $"姓名：{MemberName}";
+			lblCustomerPhone.Text = $"電話：{MemberPhone}";
+			lblOrderType.Text = $"訂購方式：{OrderType}";
+			lblOrderTime.Text = $"下單時間：{OrderTime:yyyy/MM/dd HH:mm:ss}";
+			lblEarnedPoints.Text = $"獲得點數：{pointEarned} 點";
+			lblUpdatedPoints.Text = $"加總後總點數：{Points} 點";
 		}
 
 		private void SetupDataGridView()
@@ -100,6 +108,16 @@ namespace BentoSystemWinform
 		{
 			this.DialogResult = DialogResult.Cancel;
 			this.Hide();
+		}
+
+		private void labelTotalAmount_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void dgvOrderDetails_CellContentClick(object sender, DataGridViewCellEventArgs e)
+		{
+
 		}
 	}
 

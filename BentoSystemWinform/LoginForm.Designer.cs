@@ -100,8 +100,11 @@
 			// btnLogin
 			// 
 			this.btnLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(140)))), ((int)(((byte)(33)))));
+			this.btnLogin.FlatAppearance.BorderColor = System.Drawing.Color.White;
 			this.btnLogin.FlatAppearance.BorderSize = 0;
-			this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnLogin.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Turquoise;
+			this.btnLogin.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(140)))), ((int)(((byte)(33)))));
+			this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
 			this.btnLogin.Font = new System.Drawing.Font("jf open 粉圓 2.1", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(254)))), ((int)(((byte)(254)))));
 			this.btnLogin.Location = new System.Drawing.Point(574, 419);

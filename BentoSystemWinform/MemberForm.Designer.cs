@@ -264,6 +264,7 @@ namespace BentoSystemWinform
 			this.txtMemberSearch.Name = "txtMemberSearch";
 			this.txtMemberSearch.Size = new System.Drawing.Size(203, 25);
 			this.txtMemberSearch.TabIndex = 13;
+			this.txtMemberSearch.TextChanged += new System.EventHandler(this.txtMemberSearch_TextChanged);
 			// 
 			// bentoSystemDataSet1
 			// 

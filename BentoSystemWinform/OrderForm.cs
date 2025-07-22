@@ -100,33 +100,51 @@ namespace BentoSystemWinform
 
 
 		// 側邊欄主介面按鈕
+		//private void btnMainForm_Click(object sender, EventArgs e)
+		//{
+		//	this.Hide();
+		//	MainForm mf = new MainForm(LoginEmployee);
+		//	mf.ShowDialog();
+		//	this.Show();
+		//}
 		private void btnMainForm_Click(object sender, EventArgs e)
 		{
-			this.Hide();
-			MainForm mf = new MainForm(LoginEmployee);
-			mf.ShowDialog();
-			this.Show();
+			FormSwitcher.SafeSwitchTo(this, new MainForm(LoginEmployee));
 		}
 
 		// 側邊欄產品管理介面按鈕
+		//private void btnProducts_Click(object sender, EventArgs e)
+		//{
+		//	this.Hide();
+		//	ProductsForm pf = new ProductsForm(LoginEmployee);
+		//	pf.ShowDialog();
+		//	this.Close();
+		//}
 		private void btnProducts_Click(object sender, EventArgs e)
 		{
-			ProductsForm pf = new ProductsForm(LoginEmployee);
-			pf.ShowDialog();
-			this.Show();
-			pf.Hide();
+			FormSwitcher.SafeSwitchTo(this, new ProductsForm(LoginEmployee));
 		}
 
+
 		// 側邊欄會員管理介面按鈕
+		//private void btnMember_Click(object sender, EventArgs e)
+		//{
+		//	this.Hide();
+		//	MemberForm mf = new MemberForm(LoginEmployee);
+		//	mf.ShowDialog();
+		//	this.Close();
+		//}
 		private void btnMember_Click(object sender, EventArgs e)
 		{
-			MemberForm mf = new MemberForm(LoginEmployee);
-			mf.ShowDialog();
-			this.Show();
-			mf.Hide(); // 釋放資源
+			FormSwitcher.SafeSwitchTo(this, new MemberForm(LoginEmployee));
 		}
 
 		// 側邊欄訂單管理介面按鈕
+		//private void btnOrders_Click(object sender, EventArgs e)
+		//{
+		//	MessageBox.Show("您已在訂單管理畫面。");
+		//}
+
 		private void btnOrders_Click(object sender, EventArgs e)
 		{
 			MessageBox.Show("您已在訂單管理畫面。");
@@ -135,39 +153,43 @@ namespace BentoSystemWinform
 		// 登出按鈕
 		private void btnLogout_Click(object sender, EventArgs e)
 		{
-			this.Hide();                         // 先隱藏目前畫面
+			//foreach (Form f in Application.OpenForms.Cast<Form>().ToList())
+			//{
+			//	if (f != this) f.Close(); // 關掉其他表單
+			//}
 
-			LoginForm loginForm = new LoginForm();
-			DialogResult result = loginForm.ShowDialog(); // 讓使用者重新登入
-
-			if (result == DialogResult.OK)
+			//this.Hide();
+			//LoginForm lf = new LoginForm();
+			//lf.ShowDialog();
+			//this.Close();
+			var confirm = MessageBox.Show("確定要登出嗎？", "登出確認", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+			if (confirm == DialogResult.Yes)
 			{
-				// 重新取得新登入者的資訊
-				this.LoginEmployee = loginForm.LoginEmployee;
-
-				MainForm mainForm = new MainForm(this.LoginEmployee);
-				mainForm.Show(); // 顯示自己（原本主畫面）
-			}
-			else
-			{
-				// 使用者關閉登入畫面、或取消，整個關掉
-				this.Hide();
+				FormSwitcher.SafeLogout(this);
 			}
 		}
 
 		//關閉按鈕叫出確認視窗
 		private void btnExit_Click(object sender, EventArgs e)
 		{
-			ExitConfirmForm exitConfirmForm = new ExitConfirmForm();
-			DialogResult result = exitConfirmForm.ShowDialog();
+			//ExitConfirmForm exitConfirmForm = new ExitConfirmForm();
+			//DialogResult result = exitConfirmForm.ShowDialog();
 
-			if (result == DialogResult.OK)
+			//if (result == DialogResult.OK)
+			//{
+			//	Application.Exit(); // 關閉整個程式
+			//}
+			//else if (result == DialogResult.Cancel)
+			//{
+			//	exitConfirmForm.Close();// 只關閉此小視窗，繼續使用主視窗
+			//}
+			using (ExitConfirmForm exitConfirmForm = new ExitConfirmForm())
 			{
-				Application.Exit(); // 關閉整個程式
-			}
-			else if (result == DialogResult.Cancel)
-			{
-				exitConfirmForm.Close();// 只關閉此小視窗，繼續使用主視窗
+				if (exitConfirmForm.ShowDialog() == DialogResult.OK)
+				{
+					Application.Exit(); // 使用者按確認，立即關閉程式
+				}
+				// 取消或關閉視窗，這裡不做事，繼續留在主視窗
 			}
 		}
 
@@ -230,6 +252,11 @@ namespace BentoSystemWinform
 				return;
 			}
 
+			foreach (var p in products)
+			{
+				p.IsOutofstock = p.StockQuantity == 0;  // 庫存為0即售完
+			}
+
 			// 可選：自行控制欄位顯示（隱藏不必要的欄位）
 			dgvProductList.AutoGenerateColumns = false;
 			dgvProductList.DataSource = products;
@@ -248,7 +275,9 @@ namespace BentoSystemWinform
 		//選擇區：建立暫存訂單項目
 		List<OrderItemTempModel> currentOrderItems;
 
-		//選擇區：點擊加入餐點
+
+
+
 		private void btnOrderAdd_Click(object sender, EventArgs e)
 		{
 			if (currentOrderItems == null || currentOrderItems.Count == 0)
@@ -278,9 +307,24 @@ namespace BentoSystemWinform
 
 			decimal total = subtotal - discount;
 
+			// 🔽 加入預覽資訊所需資料
+			string memberName = rbtnIsMember.Checked && cbMemberList.SelectedItem is MemberModel m1 ? m1.MemberName : txtInsertOrderName.Text;
+			string memberPhone = rbtnIsMember.Checked && cbMemberList.SelectedItem is MemberModel m2 ? m2.MemberPhone : txtInsertOrderName.Text;
+			string orderType = rbtnDelivery.Checked ? "外帶" : "自取";
+			DateTime orderTime = DateTime.Now;
+			int EarnedPoints = (int)(subtotal / 100);
+			int UpdatedPoints = rbtnIsMember.Checked && cbMemberList.SelectedItem is MemberModel m3 ? m3.Points : 0;
+
+			// 🔽 呼叫表單，傳入所有必要資訊
 			var previewForm = new OrderLastCheckForm(
 				currentOrderItems,
 				total,
+				memberName,
+				memberPhone,
+				orderType,
+				orderTime,
+				EarnedPoints,
+				UpdatedPoints,
 				allowSubmit: false);  // 預覽模式，不可送出
 
 			previewForm.ShowDialog();
@@ -337,32 +381,52 @@ namespace BentoSystemWinform
 			decimal subtotal = currentOrderItems.Sum(x => x.Subtotal);
 
 			decimal discount = 0m;
+			int PointsEarned = 0;
+			int UpdatedPoints = 0;
+
+			// 如果是會員，計算折扣和點數
 			if (rbtnIsMember.Checked && cbMemberList.SelectedItem is MemberModel member)
 			{
+				// 生日月折扣
 				if (member.Birthday.Month == now.Month)
 					discount = subtotal * 0.2m;
+
+				// 計算每100元1點
+				PointsEarned = (int)(subtotal / 100);
+				UpdatedPoints = member.Points;  // 取得會員現有點數
 			}
 
 			decimal total = subtotal - discount;
 
+			// 傳遞資料至訂單確認視窗
 			var confirmForm = new BentoSystemWinform.OrderLastCheckForm(
 				currentOrderItems,
 				total,
+				name,
+				phone,
+				type,
+				now,
+				PointsEarned,
+				UpdatedPoints,
 				true);
 
 			var result = confirmForm.ShowDialog();
 
 			if (result == DialogResult.OK)
 			{
-				SaveOrderToDatabase(now, type, total);
+				// 送出訂單至資料庫
+				SaveOrderToDatabase(now, type, total, discount);
 				MessageBox.Show("訂單送出成功！", "成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				ClearOrderForm();  // 呼叫清空頁面
 			}
+
+			// 更新庫存
 			foreach (var item in currentOrderItems)
 			{
 				Pbll.DeductStock(item.ProductId, item.Quantity);
 			}
-			
+
+			ClearOrderForm(); // 清空訂單表單
 		}
 		// 重新載入商品清單
 		public void ReloadProductList()
@@ -379,29 +443,68 @@ namespace BentoSystemWinform
 				return;
 			}
 
-			decimal subtotal = currentOrderItems.Sum(x => x.ProductPrice * x.Quantity);
+			decimal subtotal = currentOrderItems.Sum(x => x.ProductPrice * x.Quantity);  // 計算小計
+			decimal discount = 0m;
 
+			// 檢查是否為會員且是否有折扣
+			if (rbtnIsMember.Checked && cbMemberList.SelectedItem is MemberModel member)
+			{
+				if (member.Birthday.Month == DateTime.Now.Month)
+				{
+					// 生日月八折
+					discount = subtotal * 0.2m;
+
+				}
+			}
+
+			// 扣除折扣後的總金額
+			decimal total = subtotal - discount;            // 取得會員/非會員資料
+			string name = rbtnIsMember.Checked && cbMemberList.SelectedItem is MemberModel m ? m.MemberName : txtInsertOrderName.Text.Trim();
+			string phone = txtOrderPhone.Text.Trim();
+			string Ordertype = rbtnDelivery.Checked ? "外送" : "自取";
+			DateTime now = DateTime.Now;
+
+			// 計算會員獲得的點數（若是會員）
+			int PointsEarned = 0;
+			int UpdatedPoints = 0;
+			if (rbtnIsMember.Checked && cbMemberList.SelectedItem is MemberModel memberM)
+			{
+				PointsEarned = (int)(subtotal / 100);  // 每100元1點
+				UpdatedPoints = memberM.Points - PointsEarned;       // 取得目前會員點數
+			}
+
+			// 使用新建構子並傳入所有參數
 			var previewForm = new OrderLastCheckForm(
 				currentOrderItems,
 				subtotal,
-				allowSubmit: false);
+				name,
+				phone,
+				Ordertype,
+				now,
+				PointsEarned,
+				UpdatedPoints,
+				allowSubmit: false);  // 預覽模式，不可送出
 
+			// 顯示預覽視窗
 			previewForm.ShowDialog();
 		}
 
-		private void SaveOrderToDatabase(DateTime orderDate, string orderType, decimal total)
+		private void SaveOrderToDatabase(DateTime orderDate, string orderType, decimal total, decimal discount)
 		{
 			// 建立 OrderData
 			OrderDataModel orderData = new OrderDataModel
 			{
 				OrderDate = orderDate,
 				OrderType = orderType,
+				Total = total, // 儲存總金額
+				Discount = discount, // 儲存折扣金額
 				EmployeeId = 1, // 假設預設員工 ID 為 1
 				MemberId = rbtnIsMember.Checked ? ((MemberModel)cbMemberList.SelectedItem).MemberId : 0
 			};
 
 			int newOrderId = orderDataDAL.InsertOrderData(orderData); // 你需要實作這個
 
+			// 儲存訂單品項
 			foreach (var item in currentOrderItems)
 			{
 				OrderItemModel orderItem = new OrderItemModel
@@ -411,25 +514,24 @@ namespace BentoSystemWinform
 					Quantity = item.Quantity,
 					//Spicy = item.Spicy
 				};
-				orderItemDAL.InsertOrderItem(orderItem); 
-
+				orderItemDAL.InsertOrderItem(orderItem);
 			}
 
 			// 累積點數（會員專屬）
 			if (rbtnIsMember.Checked)
 			{
-				int pointEarned = (int)(total / 100);
+				int pointEarned = (int)(total / 100);  // 計算累積點數
 				int memberId = ((MemberModel)cbMemberList.SelectedItem).MemberId;
-				memberDAL.AddPointsToMember(memberId, pointEarned); // 這是你要新增的 DAL 方法
+				memberDAL.AddPointsToMember(memberId, pointEarned); // 更新點數
 			}
 
 			MessageBox.Show("訂單已成功送出！");
+
+			// 還原會員身份
 			bool wasMember = rbtnIsMember.Checked;
 			bool wasNotMember = rbtnNonMember.Checked;
 
-
-
-			// 還原會員身份
+			// 還原身份
 			rbtnIsMember.Checked = wasMember;
 			rbtnNonMember.Checked = wasNotMember;
 		}
@@ -496,9 +598,9 @@ namespace BentoSystemWinform
 			var product = (ProductModel)dgvProductList.CurrentRow.DataBoundItem;
 
 			// 檢查庫存
-			if (product.StockQuantity <= 0)
+			if (product.IsOutofstock)
 			{
-				MessageBox.Show("該商品已缺貨，無法加入訂單", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				MessageBox.Show("今日售完，無法選擇此商品", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				return;
 			}
 
@@ -514,13 +616,6 @@ namespace BentoSystemWinform
 				return;
 			}
 
-			//// 取得該列的加辣欄勾選狀態
-			//bool isSpicy = false;
-			//var spicyCell = dgvProductList.CurrentRow.Cells["IsSpicy"];
-			//if (spicyCell != null && spicyCell.Value != null)
-			//{
-			//	isSpicy = Convert.ToBoolean(spicyCell.Value);
-			//}
 
 			// 加入暫存訂單清單
 			var item = new OrderItemTempModel
@@ -529,7 +624,7 @@ namespace BentoSystemWinform
 				ProductName = product.ProductName,
 				ProductPrice = product.ProductPrice,
 				Quantity = quantity,
-				//Spicy = chbIsSpicy.Checked
+				
 			};
 
 			currentOrderItems.Add(item);
@@ -538,6 +633,7 @@ namespace BentoSystemWinform
 
 			// 依你需求，這邊可刷新訂單列表或試算價格
 			UpdatePriceCalculation();
+			dgvProductList.Focus();
 
 		}
 
@@ -591,18 +687,15 @@ namespace BentoSystemWinform
 			{
 				if (product.IsOutofstock)
 				{
+					// 整列變灰色
 					dgvProductList.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.LightGray;
 					dgvProductList.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.DarkGray;
-					dgvProductList.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.LightGray;
-					dgvProductList.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.DarkGray;
 				}
 				else
 				{
-					// 回復正常樣式（避免資料重複載入時顏色殘留）
+					// 恢復正常顏色
 					dgvProductList.Rows[e.RowIndex].DefaultCellStyle.BackColor = dgvProductList.DefaultCellStyle.BackColor;
 					dgvProductList.Rows[e.RowIndex].DefaultCellStyle.ForeColor = dgvProductList.DefaultCellStyle.ForeColor;
-					dgvProductList.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = dgvProductList.DefaultCellStyle.SelectionBackColor;
-					dgvProductList.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = dgvProductList.DefaultCellStyle.SelectionForeColor;
 				}
 			}
 		}
@@ -641,7 +734,7 @@ namespace BentoSystemWinform
 			rbtnPickup.Checked = false;
 
 			// 清空餐點列表（依你的DataGridView名稱調整）
-			dgvProductList.DataSource = null;
+			dgvProductList.Refresh(); // 重新載入商品清單
 
 			// 重置價格顯示區
 			labelSubtotal.Text = "0 元";

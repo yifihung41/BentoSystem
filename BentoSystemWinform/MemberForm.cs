@@ -95,19 +95,23 @@ namespace BentoSystemWinform
 		// 側邊欄主介面按鈕
 		private void btnMainForm_Click(object sender, EventArgs e)
 		{
-			this.Hide();
-			MainForm mf = new MainForm(LoginEmployee);
-			mf.ShowDialog();
-			this.Show();
+			//this.Hide();
+			//MainForm mf = new MainForm(LoginEmployee);
+			//mf.ShowDialog();
+			//this.Show();
+
+			FormSwitcher.SafeSwitchTo(this, new MainForm(LoginEmployee));
 		}
 
 		// 側邊欄產品管理介面按鈕
 		private void btnProducts_Click(object sender, EventArgs e)
 		{
-			ProductsForm pf = new ProductsForm(LoginEmployee);
-			pf.ShowDialog();
-			this.Show();  // 隱藏目前畫面
-			pf.Hide();	
+			//this.Hide();
+			//ProductsForm pf = new ProductsForm(LoginEmployee);
+			//pf.ShowDialog();
+			//this.Close();
+
+			FormSwitcher.SafeSwitchTo(this, new ProductsForm(LoginEmployee));
 		}
 
 		// 側邊欄會員管理介面按鈕
@@ -119,47 +123,56 @@ namespace BentoSystemWinform
 		// 側邊欄訂單管理介面按鈕
 		private void btnOrders_Click(object sender, EventArgs e)
 		{
-			OrderForm of = new OrderForm(LoginEmployee);
-			of.ShowDialog(); // 以模態方式顯示 OrderForm，MainForm 會自動禁用
-			this.Show();     // OrderForm 關閉後，重新顯示 MainForm
-			of.Hide();    // 【建議新增】釋放 OrderForm 的資源
+			//this.Hide();
+			//OrderForm of = new OrderForm(LoginEmployee);
+			//of.ShowDialog(); // 以模態方式顯示 OrderForm，MainForm 會自動禁用
+			//of.ShowDialog();
+			//this.Close();
+
+			FormSwitcher.SafeSwitchTo(this, new OrderForm(LoginEmployee));
 		}
 
 		// 登出按鈕
 		private void btnLogout_Click(object sender, EventArgs e)
 		{
-			this.Hide();                         // 先隱藏目前畫面
+			//foreach (Form f in Application.OpenForms.Cast<Form>().ToList())
+			//{
+			//	if (f != this) f.Close(); // 關掉其他表單
+			//}
 
-			LoginForm loginForm = new LoginForm();
-			DialogResult result = loginForm.ShowDialog(); // 讓使用者重新登入
+			//this.Hide();
+			//LoginForm lf = new LoginForm();
+			//lf.ShowDialog();
+			//this.Close();
 
-			if (result == DialogResult.OK)
+			var confirm = MessageBox.Show("確定要登出嗎？", "登出確認", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+			if (confirm == DialogResult.Yes)
 			{
-				// 重新取得新登入者的資訊
-				this.LoginEmployee = loginForm.LoginEmployee;
-
-				this.Show(); // 顯示自己（原本主畫面）
-			}
-			else
-			{
-				// 使用者關閉登入畫面、或取消，整個關掉
-				this.Hide();
+				FormSwitcher.SafeLogout(this);
 			}
 		}
 
 		//關閉按鈕叫出確認視窗
 		private void btnExit_Click(object sender, EventArgs e)
 		{
-			ExitConfirmForm exitConfirmForm = new ExitConfirmForm();
-			DialogResult result = exitConfirmForm.ShowDialog();
+			//ExitConfirmForm exitConfirmForm = new ExitConfirmForm();
+			//DialogResult result = exitConfirmForm.ShowDialog();
 
-			if (result == DialogResult.OK)
+			//if (result == DialogResult.OK)
+			//{
+			//	Application.Exit(); // 關閉整個程式
+			//}
+			//else if (result == DialogResult.Cancel)
+			//{
+			//	exitConfirmForm.Close();// 只關閉此小視窗，繼續使用主視窗
+			//}
+			using (ExitConfirmForm exitConfirmForm = new ExitConfirmForm())
 			{
-				Application.Exit(); // 關閉整個程式
-			}
-			else if (result == DialogResult.Cancel)
-			{
-				exitConfirmForm.Close();// 只關閉此小視窗，繼續使用主視窗
+				if (exitConfirmForm.ShowDialog() == DialogResult.OK)
+				{
+					Application.Exit(); // 使用者按確認，立即關閉程式
+				}
+				// 取消或關閉視窗，這裡不做事，繼續留在主視窗
 			}
 		}
 
@@ -224,12 +237,14 @@ namespace BentoSystemWinform
 			{
 				MessageBox.Show("找不到此會員。");
 			}
+			txtMemberSearch.Text = string.Empty;
 		}
 
 		// 新增按鈕，清空輸入欄位
 		private void btnMemberAdd_Click(object sender, EventArgs e)
 		{
 			ClearInputFields();
+			
 		}
 
 		private void ClearInputFields()
@@ -315,6 +330,11 @@ namespace BentoSystemWinform
 			{
 				MessageBox.Show("請先選擇要刪除的會員！");
 			}
+		}
+
+		private void txtMemberSearch_TextChanged(object sender, EventArgs e)
+		{
+
 		}
 	}
 }

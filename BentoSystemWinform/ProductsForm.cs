@@ -103,10 +103,16 @@ namespace BentoSystemWinform
 		// 側邊欄主介面按鈕
 		private void btnMainForm_Click(object sender, EventArgs e)
 		{
-			this.Hide();
-			MainForm mf = new MainForm(LoginEmployee);
-			mf.ShowDialog();
-			this.Show();
+			//this.Hide();
+			//MainForm mf = new MainForm(LoginEmployee);
+			//mf.ShowDialog();
+			//this.Show();
+			 if (this is MainForm)
+            {
+                MessageBox.Show("您已在主選單畫面。");
+                return;
+            }
+            FormSwitcher.SafeSwitchTo(this, new MainForm(LoginEmployee));
 		}
 
 		// 側邊欄產品管理介面按鈕
@@ -118,44 +124,45 @@ namespace BentoSystemWinform
 		// 側邊欄會員管理介面按鈕
 		private void btnMember_Click(object sender, EventArgs e)
 		{
-			
-			using (MemberForm mf = new MemberForm(LoginEmployee)) // 傳遞 LoginEmployee 作為參數
-			{
-				mf.ShowDialog();
-			} 
-			this.Show();
+
+			//using (MemberForm mf = new MemberForm(LoginEmployee)) // 傳遞 LoginEmployee 作為參數
+			//{
+			//	mf.ShowDialog();
+			//} 
+			//this.Show();
+
+			FormSwitcher.SafeSwitchTo(this, new MemberForm(LoginEmployee));
 		}
 
 		// 側邊欄訂單管理介面按鈕
 		private void btnOrders_Click(object sender, EventArgs e)
 		{
-			using (OrderForm of = new OrderForm(LoginEmployee))
-			{
-				of.ShowDialog();
-			}
-			this.Show();
+			//using (OrderForm of = new OrderForm(LoginEmployee))
+			//{
+			//	of.ShowDialog();
+			//}
+			//this.Show();
+
+			FormSwitcher.SafeSwitchTo(this, new OrderForm(LoginEmployee));
 		}
 
 		// 登出按鈕
 		private void btnLogout_Click(object sender, EventArgs e)
 		{
-			this.Hide();                         // 先隱藏目前畫面
+			//foreach (Form f in Application.OpenForms.Cast<Form>().ToList())
+			//{
+			//	if (f != this) f.Close(); // 關掉其他表單
+			//}
 
-			LoginForm loginForm = new LoginForm();
-			DialogResult result = loginForm.ShowDialog(); // 讓使用者重新登入
+			//this.Hide();
+			//LoginForm lf = new LoginForm();
+			//lf.ShowDialog();
+			//this.Close();
 
-			if (result == DialogResult.OK)
+			var confirm = MessageBox.Show("確定要登出嗎？", "登出確認", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+			if (confirm == DialogResult.Yes)
 			{
-				// 重新取得新登入者的資訊
-				this.LoginEmployee = loginForm.LoginEmployee;
-
-				MainForm mainForm = new MainForm(this.LoginEmployee);
-				mainForm.Show(); // 顯示自己（原本主畫面）
-			}
-			else
-			{
-				// 使用者關閉登入畫面、或取消，整個關掉
-				this.Hide();
+				FormSwitcher.SafeLogout(this);
 			}
 		}
 
@@ -163,16 +170,24 @@ namespace BentoSystemWinform
 		//關閉按鈕叫出確認視窗
 		private void btnExit_Click(object sender, EventArgs e)
 		{
-			ExitConfirmForm exitConfirmForm = new ExitConfirmForm();
-			DialogResult result = exitConfirmForm.ShowDialog();
+			//ExitConfirmForm exitConfirmForm = new ExitConfirmForm();
+			//DialogResult result = exitConfirmForm.ShowDialog();
 
-			if (result == DialogResult.OK)
+			//if (result == DialogResult.OK)
+			//{
+			//	Application.Exit(); // 關閉整個程式
+			//}
+			//else if (result == DialogResult.Cancel)
+			//{
+			//	exitConfirmForm.Close();// 只關閉此小視窗，繼續使用主視窗
+			//}
+			using (ExitConfirmForm exitConfirmForm = new ExitConfirmForm())
 			{
-				Application.Exit(); // 關閉整個程式
-			}
-			else if (result == DialogResult.Cancel)
-			{
-				exitConfirmForm.Close();// 只關閉此小視窗，繼續使用主視窗
+				if (exitConfirmForm.ShowDialog() == DialogResult.OK)
+				{
+					Application.Exit(); // 使用者按確認，立即關閉程式
+				}
+				// 取消或關閉視窗，這裡不做事，繼續留在主視窗
 			}
 		}
 
@@ -185,6 +200,7 @@ namespace BentoSystemWinform
 			dgvProduct.AutoGenerateColumns = false;
 			ProductBLL Pbll = new ProductBLL();
 			dgvProduct.DataSource = Pbll.GetProductList();
+			
 
 			//格式：標題欄文字都置中
 			foreach (DataGridViewColumn col in dgvProduct.Columns)
@@ -242,6 +258,7 @@ namespace BentoSystemWinform
 				DisplayProductDetails(product);
 			else
 				MessageBox.Show("找不到此餐點");
+			txtProductSearch.Text = string.Empty;
 		}
 
 
@@ -294,6 +311,7 @@ namespace BentoSystemWinform
 		{
 			ClearInputFields();
 			selectedImagePath = "";
+			
 		}
 
 		//圖片上傳按鈕

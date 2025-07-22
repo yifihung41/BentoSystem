@@ -13,5 +13,8 @@ namespace BentoSystemWinform.Models
 		public int EmployeeId { get; set; }
 		public DateTime OrderDate { get; set; }
 		public string OrderType { get; set; }
+
+		public decimal Discount{ get; set; }
+		public decimal Total { get; set; }
 	}
 }

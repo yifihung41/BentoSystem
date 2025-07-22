@@ -116,6 +116,7 @@
       <DependentUpon>MemberForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\EmployeeModel.cs" />
+    <Compile Include="Models\FormSwitcher.cs" />
     <Compile Include="Models\MemberModel.cs" />
     <Compile Include="Models\OrderDataModel.cs" />
     <Compile Include="Models\OrderItemModel.cs" />

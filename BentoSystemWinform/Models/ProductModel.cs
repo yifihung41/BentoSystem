@@ -13,6 +13,7 @@ namespace BentoSystemWinform.Models
 		public int ProductPrice { get; set; }
 		public int StockQuantity { get; set; }
 		public bool IsOutofstock { get; set; }
+		public bool IsOutOfStock => StockQuantity <= 0;
 		public string ProductDesc { get; set; }
 		public string ImagePath { get; set; }
 

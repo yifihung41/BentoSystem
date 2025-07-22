@@ -54,10 +54,6 @@
 			this.rbtnDelivery = new System.Windows.Forms.RadioButton();
 			this.gbOrderChoose = new System.Windows.Forms.GroupBox();
 			this.dgvProductList = new System.Windows.Forms.DataGridView();
-			this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.ProductPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.StockQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.btnOrderAdd = new System.Windows.Forms.Button();
 			this.labelOrderNumber = new System.Windows.Forms.Label();
 			this.nudQuantity = new System.Windows.Forms.NumericUpDown();
@@ -86,6 +82,10 @@
 			this.btnExit = new System.Windows.Forms.Button();
 			this.pictureBox3 = new System.Windows.Forms.PictureBox();
 			this.timer1 = new System.Windows.Forms.Timer(this.components);
+			this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ProductPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.StockQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ProductDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -386,53 +386,13 @@
             this.ProductName,
             this.ProductPrice,
             this.StockQuantity,
-            this.Subtotal});
+            this.ProductDesc});
 			this.dgvProductList.Location = new System.Drawing.Point(23, 36);
 			this.dgvProductList.Name = "dgvProductList";
 			this.dgvProductList.RowTemplate.Height = 24;
-			this.dgvProductList.Size = new System.Drawing.Size(465, 224);
+			this.dgvProductList.Size = new System.Drawing.Size(535, 224);
 			this.dgvProductList.TabIndex = 5;
 			this.dgvProductList.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvProductList_CellFormatting);
-			// 
-			// ProductName
-			// 
-			this.ProductName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-			this.ProductName.DataPropertyName = "ProductName";
-			this.ProductName.HeaderText = "品項";
-			this.ProductName.Name = "ProductName";
-			this.ProductName.ReadOnly = true;
-			this.ProductName.ToolTipText = "品項";
-			this.ProductName.Width = 63;
-			// 
-			// ProductPrice
-			// 
-			this.ProductPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-			this.ProductPrice.DataPropertyName = "ProductPrice";
-			this.ProductPrice.HeaderText = "單價";
-			this.ProductPrice.Name = "ProductPrice";
-			this.ProductPrice.ReadOnly = true;
-			this.ProductPrice.ToolTipText = "單價";
-			this.ProductPrice.Width = 63;
-			// 
-			// StockQuantity
-			// 
-			this.StockQuantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-			this.StockQuantity.DataPropertyName = "StockQuantity";
-			this.StockQuantity.HeaderText = "庫存";
-			this.StockQuantity.Name = "StockQuantity";
-			this.StockQuantity.ReadOnly = true;
-			this.StockQuantity.ToolTipText = "庫存";
-			this.StockQuantity.Width = 63;
-			// 
-			// Subtotal
-			// 
-			this.Subtotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-			this.Subtotal.DataPropertyName = "Subtotal";
-			this.Subtotal.HeaderText = "小計";
-			this.Subtotal.Name = "Subtotal";
-			this.Subtotal.ReadOnly = true;
-			this.Subtotal.ToolTipText = "小計";
-			this.Subtotal.Width = 63;
 			// 
 			// btnOrderAdd
 			// 
@@ -442,7 +402,7 @@
 			this.btnOrderAdd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(254)))), ((int)(((byte)(254)))));
 			this.btnOrderAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnOrderAdd.Image")));
 			this.btnOrderAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.btnOrderAdd.Location = new System.Drawing.Point(540, 196);
+			this.btnOrderAdd.Location = new System.Drawing.Point(577, 206);
 			this.btnOrderAdd.Name = "btnOrderAdd";
 			this.btnOrderAdd.Size = new System.Drawing.Size(125, 54);
 			this.btnOrderAdd.TabIndex = 4;
@@ -454,7 +414,7 @@
 			// 
 			this.labelOrderNumber.AutoSize = true;
 			this.labelOrderNumber.Font = new System.Drawing.Font("jf open 粉圓 2.1", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.labelOrderNumber.Location = new System.Drawing.Point(536, 151);
+			this.labelOrderNumber.Location = new System.Drawing.Point(577, 152);
 			this.labelOrderNumber.Name = "labelOrderNumber";
 			this.labelOrderNumber.Size = new System.Drawing.Size(73, 24);
 			this.labelOrderNumber.TabIndex = 2;
@@ -464,7 +424,7 @@
 			// nudQuantity
 			// 
 			this.nudQuantity.Font = new System.Drawing.Font("jf open 粉圓 2.1", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.nudQuantity.Location = new System.Drawing.Point(615, 147);
+			this.nudQuantity.Location = new System.Drawing.Point(652, 148);
 			this.nudQuantity.Name = "nudQuantity";
 			this.nudQuantity.Size = new System.Drawing.Size(50, 32);
 			this.nudQuantity.TabIndex = 1;
@@ -701,6 +661,46 @@
 			this.pictureBox3.TabIndex = 22;
 			this.pictureBox3.TabStop = false;
 			// 
+			// ProductName
+			// 
+			this.ProductName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+			this.ProductName.DataPropertyName = "ProductName";
+			this.ProductName.HeaderText = "品項";
+			this.ProductName.Name = "ProductName";
+			this.ProductName.ReadOnly = true;
+			this.ProductName.ToolTipText = "品項";
+			this.ProductName.Width = 63;
+			// 
+			// ProductPrice
+			// 
+			this.ProductPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+			this.ProductPrice.DataPropertyName = "ProductPrice";
+			this.ProductPrice.HeaderText = "單價";
+			this.ProductPrice.Name = "ProductPrice";
+			this.ProductPrice.ReadOnly = true;
+			this.ProductPrice.ToolTipText = "單價";
+			this.ProductPrice.Width = 63;
+			// 
+			// StockQuantity
+			// 
+			this.StockQuantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+			this.StockQuantity.DataPropertyName = "StockQuantity";
+			this.StockQuantity.HeaderText = "庫存";
+			this.StockQuantity.Name = "StockQuantity";
+			this.StockQuantity.ReadOnly = true;
+			this.StockQuantity.ToolTipText = "庫存";
+			this.StockQuantity.Width = 63;
+			// 
+			// ProductDesc
+			// 
+			this.ProductDesc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+			this.ProductDesc.DataPropertyName = "ProductDesc";
+			this.ProductDesc.HeaderText = "描述";
+			this.ProductDesc.Name = "ProductDesc";
+			this.ProductDesc.ReadOnly = true;
+			this.ProductDesc.ToolTipText = "描述";
+			this.ProductDesc.Width = 63;
+			// 
 			// OrderForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 17F);
@@ -803,11 +803,11 @@
 		private System.Windows.Forms.DataGridView dgvProductList;
 		private System.Windows.Forms.Button btnOrderAdd;
 		private System.Windows.Forms.Panel panel2;
+		private System.Windows.Forms.Button btnSubmitOrder;
+		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ProductPrice;
 		private System.Windows.Forms.DataGridViewTextBoxColumn StockQuantity;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Subtotal;
-		private System.Windows.Forms.Button btnSubmitOrder;
-		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.DataGridViewTextBoxColumn ProductDesc;
 	}
 }

@@ -133,16 +133,19 @@ namespace BentoSystemWinform
 		//登入系統離開按鈕點擊事件
 		private void btnExit_Click(object sender, EventArgs e)
 		{
-			ExitConfirmForm exitConfirmForm = new ExitConfirmForm();
-			DialogResult result = exitConfirmForm.ShowDialog();
 
-			if (result == DialogResult.OK)
+
+			using (ExitConfirmForm exitConfirmForm = new ExitConfirmForm())
 			{
-				Application.Exit(); // 關閉整個程式
-			}
-			else if (result == DialogResult.Cancel)
-			{
-				exitConfirmForm.Close();// 只關閉此小視窗，繼續使用主視窗
+				if (exitConfirmForm.ShowDialog() == DialogResult.OK)
+				{
+					// 設定要真正結束整個程式
+					Program.IsExitApp = true;
+
+					// 關閉所有視窗並跳出主程式
+					Application.Exit();
+				}
+				// 若取消或關閉 ExitConfirmForm，就什麼都不做，繼續留在主畫面
 			}
 		}
 

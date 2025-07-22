@@ -31,7 +31,7 @@ namespace BentoSystemWinform.DAL
 						MemberName = reader["MemberName"]?.ToString() ?? "",
 						MemberPhone = reader["MemberPhone"]?.ToString() ?? "",
 						MemberAddress = reader["MemberAddress"]?.ToString() ?? "",
-						Birthday = Convert.ToDateTime(reader["Birthday"]).ToString("yyyy/MM/dd"),
+						Birthday = reader["Birthday"] == DBNull.Value ? DateTime.MinValue : Convert.ToDateTime(reader["Birthday"]),
 						Points = reader["Points"] != DBNull.Value ? Convert.ToInt32(reader["Points"]) : 0
 					};
 					list.Add(m);
@@ -122,13 +122,29 @@ namespace BentoSystemWinform.DAL
 						MemberName = reader["MemberName"]?.ToString() ?? "",
 						MemberPhone = reader["MemberPhone"]?.ToString() ?? "",
 						MemberAddress = reader["MemberAddress"]?.ToString() ?? "",
-						Birthday = reader["Birthday"]?.ToString() ?? "",
+						Birthday = reader["Birthday"] == DBNull.Value ? DateTime.MinValue : Convert.ToDateTime(reader["Birthday"]),
 						Points = reader["Points"] != DBNull.Value ? Convert.ToInt32(reader["Points"]) : 0
 					};
 					list.Add(m);
 				}
 			}
 			return list;
+		}
+
+		//會員累積點數
+		public void AddPointsToMember(int memberId, int pointsToAdd)
+		{
+			string sql = "UPDATE Member_LBSMS SET Points = Points + @Points WHERE MemberId = @MemberId";
+
+			using (SqlConnection conn = new SqlConnection(connectionString))
+			using (SqlCommand cmd = new SqlCommand(sql, conn))
+			{
+				cmd.Parameters.AddWithValue("@Points", pointsToAdd);
+				cmd.Parameters.AddWithValue("@MemberId", memberId);
+
+				conn.Open();
+				cmd.ExecuteNonQuery();
+			}
 		}
 	}
 }

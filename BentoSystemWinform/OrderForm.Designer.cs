@@ -30,6 +30,7 @@
 		{
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OrderForm));
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.pictureBox2 = new System.Windows.Forms.PictureBox();
 			this.btnLogout = new System.Windows.Forms.Button();
@@ -40,19 +41,26 @@
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.gbOrderInfo = new System.Windows.Forms.GroupBox();
 			this.labelOrderTime = new System.Windows.Forms.Label();
-			this.labelOrderDateTime = new System.Windows.Forms.Label();
-			this.cbOrderType = new System.Windows.Forms.ComboBox();
+			this.cbMemberList = new System.Windows.Forms.ComboBox();
 			this.labelOrderType = new System.Windows.Forms.Label();
-			this.textOrderPhone = new System.Windows.Forms.TextBox();
+			this.txtOrderPhone = new System.Windows.Forms.TextBox();
 			this.labelOrderPhone = new System.Windows.Forms.Label();
-			this.txtNonMember = new System.Windows.Forms.TextBox();
+			this.labelOrderDateTime = new System.Windows.Forms.Label();
+			this.txtInsertOrderName = new System.Windows.Forms.TextBox();
 			this.rbtnNonMember = new System.Windows.Forms.RadioButton();
 			this.rbtnIsMember = new System.Windows.Forms.RadioButton();
+			this.panel2 = new System.Windows.Forms.Panel();
+			this.rbtnPickup = new System.Windows.Forms.RadioButton();
+			this.rbtnDelivery = new System.Windows.Forms.RadioButton();
 			this.gbOrderChoose = new System.Windows.Forms.GroupBox();
+			this.dgvProductList = new System.Windows.Forms.DataGridView();
+			this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ProductPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.StockQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.btnOrderAdd = new System.Windows.Forms.Button();
-			this.chbSpicy = new System.Windows.Forms.CheckBox();
 			this.labelOrderNumber = new System.Windows.Forms.Label();
-			this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+			this.nudQuantity = new System.Windows.Forms.NumericUpDown();
 			this.product_LBSMSBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.bentoSystemDataSet = new BentoSystemWinform.BentoSystemDataSet();
 			this.bentoSystemDataSet2 = new BentoSystemWinform.BentoSystemDataSet2();
@@ -70,19 +78,22 @@
 			this.labelTotalTitle = new System.Windows.Forms.Label();
 			this.labelDiscountTitle = new System.Windows.Forms.Label();
 			this.labelSubTotalTitle = new System.Windows.Forms.Label();
-			this.btnOrderClear = new System.Windows.Forms.Button();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+			this.btnSubmitOrder = new System.Windows.Forms.Button();
 			this.btnOrderPre = new System.Windows.Forms.Button();
-			this.btnOrderOK = new System.Windows.Forms.Button();
 			this.btnOrderMemberCheck = new System.Windows.Forms.Button();
+			this.label1 = new System.Windows.Forms.Label();
 			this.btnExit = new System.Windows.Forms.Button();
 			this.pictureBox3 = new System.Windows.Forms.PictureBox();
+			this.timer1 = new System.Windows.Forms.Timer(this.components);
 			this.panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.gbOrderInfo.SuspendLayout();
+			this.panel2.SuspendLayout();
 			this.gbOrderChoose.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.dgvProductList)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.nudQuantity)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.product_LBSMSBindingSource)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.bentoSystemDataSet)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.bentoSystemDataSet2)).BeginInit();
@@ -218,158 +229,246 @@
 			// gbOrderInfo
 			// 
 			this.gbOrderInfo.Controls.Add(this.labelOrderTime);
-			this.gbOrderInfo.Controls.Add(this.labelOrderDateTime);
-			this.gbOrderInfo.Controls.Add(this.cbOrderType);
+			this.gbOrderInfo.Controls.Add(this.cbMemberList);
 			this.gbOrderInfo.Controls.Add(this.labelOrderType);
-			this.gbOrderInfo.Controls.Add(this.textOrderPhone);
+			this.gbOrderInfo.Controls.Add(this.txtOrderPhone);
 			this.gbOrderInfo.Controls.Add(this.labelOrderPhone);
-			this.gbOrderInfo.Controls.Add(this.txtNonMember);
+			this.gbOrderInfo.Controls.Add(this.labelOrderDateTime);
+			this.gbOrderInfo.Controls.Add(this.txtInsertOrderName);
 			this.gbOrderInfo.Controls.Add(this.rbtnNonMember);
 			this.gbOrderInfo.Controls.Add(this.rbtnIsMember);
-			this.gbOrderInfo.Location = new System.Drawing.Point(478, 11);
+			this.gbOrderInfo.Controls.Add(this.panel2);
+			this.gbOrderInfo.Location = new System.Drawing.Point(478, 12);
 			this.gbOrderInfo.Name = "gbOrderInfo";
-			this.gbOrderInfo.Size = new System.Drawing.Size(510, 97);
+			this.gbOrderInfo.Size = new System.Drawing.Size(510, 145);
 			this.gbOrderInfo.TabIndex = 24;
 			this.gbOrderInfo.TabStop = false;
 			this.gbOrderInfo.Text = "訂單資訊";
+			this.gbOrderInfo.Enter += new System.EventHandler(this.gbOrderInfo_Enter);
 			// 
 			// labelOrderTime
 			// 
 			this.labelOrderTime.AutoSize = true;
-			this.labelOrderTime.BackColor = System.Drawing.Color.White;
-			this.labelOrderTime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(140)))), ((int)(((byte)(33)))));
-			this.labelOrderTime.Location = new System.Drawing.Point(334, 59);
+			this.labelOrderTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(140)))), ((int)(((byte)(33)))));
+			this.labelOrderTime.Location = new System.Drawing.Point(114, 111);
 			this.labelOrderTime.Name = "labelOrderTime";
 			this.labelOrderTime.Size = new System.Drawing.Size(0, 17);
-			this.labelOrderTime.TabIndex = 9;
+			this.labelOrderTime.TabIndex = 13;
 			// 
-			// labelOrderDateTime
+			// cbMemberList
 			// 
-			this.labelOrderDateTime.AutoSize = true;
-			this.labelOrderDateTime.Location = new System.Drawing.Point(244, 59);
-			this.labelOrderDateTime.Name = "labelOrderDateTime";
-			this.labelOrderDateTime.Size = new System.Drawing.Size(83, 17);
-			this.labelOrderDateTime.TabIndex = 8;
-			this.labelOrderDateTime.Text = "訂購時間：";
-			// 
-			// cbOrderType
-			// 
-			this.cbOrderType.FormattingEnabled = true;
-			this.cbOrderType.Location = new System.Drawing.Point(100, 55);
-			this.cbOrderType.Name = "cbOrderType";
-			this.cbOrderType.Size = new System.Drawing.Size(121, 25);
-			this.cbOrderType.TabIndex = 7;
+			this.cbMemberList.FormattingEnabled = true;
+			this.cbMemberList.Location = new System.Drawing.Point(89, 27);
+			this.cbMemberList.Name = "cbMemberList";
+			this.cbMemberList.Size = new System.Drawing.Size(149, 25);
+			this.cbMemberList.TabIndex = 10;
+			this.cbMemberList.SelectedIndexChanged += new System.EventHandler(this.cbMemberList_SelectedIndexChanged);
 			// 
 			// labelOrderType
 			// 
 			this.labelOrderType.AutoSize = true;
-			this.labelOrderType.Location = new System.Drawing.Point(16, 59);
+			this.labelOrderType.Location = new System.Drawing.Point(244, 72);
 			this.labelOrderType.Name = "labelOrderType";
-			this.labelOrderType.Size = new System.Drawing.Size(83, 17);
+			this.labelOrderType.Size = new System.Drawing.Size(98, 17);
 			this.labelOrderType.TabIndex = 6;
-			this.labelOrderType.Text = "訂購方式：";
+			this.labelOrderType.Text = "【訂購方式】";
 			// 
-			// textOrderPhone
+			// txtOrderPhone
 			// 
-			this.textOrderPhone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(140)))), ((int)(((byte)(33)))));
-			this.textOrderPhone.Location = new System.Drawing.Point(343, 22);
-			this.textOrderPhone.Name = "textOrderPhone";
-			this.textOrderPhone.Size = new System.Drawing.Size(149, 25);
-			this.textOrderPhone.TabIndex = 4;
+			this.txtOrderPhone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(140)))), ((int)(((byte)(33)))));
+			this.txtOrderPhone.Location = new System.Drawing.Point(89, 68);
+			this.txtOrderPhone.Name = "txtOrderPhone";
+			this.txtOrderPhone.Size = new System.Drawing.Size(149, 25);
+			this.txtOrderPhone.TabIndex = 4;
 			// 
 			// labelOrderPhone
 			// 
 			this.labelOrderPhone.AutoSize = true;
-			this.labelOrderPhone.Location = new System.Drawing.Point(283, 26);
+			this.labelOrderPhone.Location = new System.Drawing.Point(4, 72);
 			this.labelOrderPhone.Name = "labelOrderPhone";
-			this.labelOrderPhone.Size = new System.Drawing.Size(53, 17);
+			this.labelOrderPhone.Size = new System.Drawing.Size(68, 17);
 			this.labelOrderPhone.TabIndex = 3;
-			this.labelOrderPhone.Text = "電話：";
+			this.labelOrderPhone.Text = "【電話】";
 			// 
-			// txtNonMember
+			// labelOrderDateTime
 			// 
-			this.txtNonMember.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.txtNonMember.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(140)))), ((int)(((byte)(33)))));
-			this.txtNonMember.Location = new System.Drawing.Point(173, 22);
-			this.txtNonMember.Name = "txtNonMember";
-			this.txtNonMember.Size = new System.Drawing.Size(100, 25);
-			this.txtNonMember.TabIndex = 2;
+			this.labelOrderDateTime.AutoSize = true;
+			this.labelOrderDateTime.Location = new System.Drawing.Point(4, 111);
+			this.labelOrderDateTime.Name = "labelOrderDateTime";
+			this.labelOrderDateTime.Size = new System.Drawing.Size(98, 17);
+			this.labelOrderDateTime.TabIndex = 8;
+			this.labelOrderDateTime.Text = "【訂購時間】";
+			this.labelOrderDateTime.Click += new System.EventHandler(this.labelOrderDateTime_Click);
+			// 
+			// txtInsertOrderName
+			// 
+			this.txtInsertOrderName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.txtInsertOrderName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(140)))), ((int)(((byte)(33)))));
+			this.txtInsertOrderName.Location = new System.Drawing.Point(348, 27);
+			this.txtInsertOrderName.Name = "txtInsertOrderName";
+			this.txtInsertOrderName.Size = new System.Drawing.Size(138, 25);
+			this.txtInsertOrderName.TabIndex = 2;
 			// 
 			// rbtnNonMember
 			// 
 			this.rbtnNonMember.AutoSize = true;
-			this.rbtnNonMember.Location = new System.Drawing.Point(78, 24);
+			this.rbtnNonMember.Location = new System.Drawing.Point(256, 29);
 			this.rbtnNonMember.Name = "rbtnNonMember";
 			this.rbtnNonMember.Size = new System.Drawing.Size(86, 21);
 			this.rbtnNonMember.TabIndex = 1;
 			this.rbtnNonMember.TabStop = true;
 			this.rbtnNonMember.Text = "非會員：";
 			this.rbtnNonMember.UseVisualStyleBackColor = true;
+			this.rbtnNonMember.CheckedChanged += new System.EventHandler(this.MemberTypeChanged);
 			// 
 			// rbtnIsMember
 			// 
 			this.rbtnIsMember.AutoSize = true;
-			this.rbtnIsMember.Location = new System.Drawing.Point(16, 24);
+			this.rbtnIsMember.Location = new System.Drawing.Point(13, 29);
 			this.rbtnIsMember.Name = "rbtnIsMember";
-			this.rbtnIsMember.Size = new System.Drawing.Size(56, 21);
+			this.rbtnIsMember.Size = new System.Drawing.Size(71, 21);
 			this.rbtnIsMember.TabIndex = 0;
 			this.rbtnIsMember.TabStop = true;
-			this.rbtnIsMember.Text = "會員";
+			this.rbtnIsMember.Text = "會員：";
 			this.rbtnIsMember.UseVisualStyleBackColor = true;
+			this.rbtnIsMember.CheckedChanged += new System.EventHandler(this.MemberTypeChanged);
+			// 
+			// panel2
+			// 
+			this.panel2.Controls.Add(this.rbtnPickup);
+			this.panel2.Controls.Add(this.rbtnDelivery);
+			this.panel2.Location = new System.Drawing.Point(346, 72);
+			this.panel2.Name = "panel2";
+			this.panel2.Size = new System.Drawing.Size(140, 25);
+			this.panel2.TabIndex = 14;
+			// 
+			// rbtnPickup
+			// 
+			this.rbtnPickup.AutoSize = true;
+			this.rbtnPickup.Location = new System.Drawing.Point(81, 1);
+			this.rbtnPickup.Name = "rbtnPickup";
+			this.rbtnPickup.Size = new System.Drawing.Size(56, 21);
+			this.rbtnPickup.TabIndex = 12;
+			this.rbtnPickup.TabStop = true;
+			this.rbtnPickup.Text = "自取";
+			this.rbtnPickup.UseVisualStyleBackColor = true;
+			// 
+			// rbtnDelivery
+			// 
+			this.rbtnDelivery.AutoSize = true;
+			this.rbtnDelivery.Location = new System.Drawing.Point(5, 1);
+			this.rbtnDelivery.Name = "rbtnDelivery";
+			this.rbtnDelivery.Size = new System.Drawing.Size(56, 21);
+			this.rbtnDelivery.TabIndex = 11;
+			this.rbtnDelivery.TabStop = true;
+			this.rbtnDelivery.Text = "外帶";
+			this.rbtnDelivery.UseVisualStyleBackColor = true;
 			// 
 			// gbOrderChoose
 			// 
+			this.gbOrderChoose.Controls.Add(this.dgvProductList);
 			this.gbOrderChoose.Controls.Add(this.btnOrderAdd);
-			this.gbOrderChoose.Controls.Add(this.chbSpicy);
 			this.gbOrderChoose.Controls.Add(this.labelOrderNumber);
-			this.gbOrderChoose.Controls.Add(this.numericUpDown1);
-			this.gbOrderChoose.Location = new System.Drawing.Point(262, 127);
+			this.gbOrderChoose.Controls.Add(this.nudQuantity);
+			this.gbOrderChoose.Location = new System.Drawing.Point(262, 162);
 			this.gbOrderChoose.Name = "gbOrderChoose";
 			this.gbOrderChoose.Size = new System.Drawing.Size(726, 283);
 			this.gbOrderChoose.TabIndex = 25;
 			this.gbOrderChoose.TabStop = false;
 			this.gbOrderChoose.Text = "餐點選擇";
 			// 
+			// dgvProductList
+			// 
+			dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+			this.dgvProductList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+			this.dgvProductList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dgvProductList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ProductName,
+            this.ProductPrice,
+            this.StockQuantity,
+            this.Subtotal});
+			this.dgvProductList.Location = new System.Drawing.Point(23, 36);
+			this.dgvProductList.Name = "dgvProductList";
+			this.dgvProductList.RowTemplate.Height = 24;
+			this.dgvProductList.Size = new System.Drawing.Size(465, 224);
+			this.dgvProductList.TabIndex = 5;
+			this.dgvProductList.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvProductList_CellFormatting);
+			// 
+			// ProductName
+			// 
+			this.ProductName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+			this.ProductName.DataPropertyName = "ProductName";
+			this.ProductName.HeaderText = "品項";
+			this.ProductName.Name = "ProductName";
+			this.ProductName.ReadOnly = true;
+			this.ProductName.ToolTipText = "品項";
+			this.ProductName.Width = 63;
+			// 
+			// ProductPrice
+			// 
+			this.ProductPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+			this.ProductPrice.DataPropertyName = "ProductPrice";
+			this.ProductPrice.HeaderText = "單價";
+			this.ProductPrice.Name = "ProductPrice";
+			this.ProductPrice.ReadOnly = true;
+			this.ProductPrice.ToolTipText = "單價";
+			this.ProductPrice.Width = 63;
+			// 
+			// StockQuantity
+			// 
+			this.StockQuantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+			this.StockQuantity.DataPropertyName = "StockQuantity";
+			this.StockQuantity.HeaderText = "庫存";
+			this.StockQuantity.Name = "StockQuantity";
+			this.StockQuantity.ReadOnly = true;
+			this.StockQuantity.ToolTipText = "庫存";
+			this.StockQuantity.Width = 63;
+			// 
+			// Subtotal
+			// 
+			this.Subtotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+			this.Subtotal.DataPropertyName = "Subtotal";
+			this.Subtotal.HeaderText = "小計";
+			this.Subtotal.Name = "Subtotal";
+			this.Subtotal.ReadOnly = true;
+			this.Subtotal.ToolTipText = "小計";
+			this.Subtotal.Width = 63;
+			// 
 			// btnOrderAdd
 			// 
 			this.btnOrderAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(140)))), ((int)(((byte)(33)))));
 			this.btnOrderAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnOrderAdd.Font = new System.Drawing.Font("jf open 粉圓 2.1", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.btnOrderAdd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(254)))), ((int)(((byte)(254)))));
 			this.btnOrderAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnOrderAdd.Image")));
 			this.btnOrderAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.btnOrderAdd.Location = new System.Drawing.Point(609, 244);
+			this.btnOrderAdd.Location = new System.Drawing.Point(540, 196);
 			this.btnOrderAdd.Name = "btnOrderAdd";
-			this.btnOrderAdd.Size = new System.Drawing.Size(111, 29);
+			this.btnOrderAdd.Size = new System.Drawing.Size(125, 54);
 			this.btnOrderAdd.TabIndex = 4;
 			this.btnOrderAdd.Text = "   加入訂單";
 			this.btnOrderAdd.UseVisualStyleBackColor = false;
-			// 
-			// chbSpicy
-			// 
-			this.chbSpicy.AutoSize = true;
-			this.chbSpicy.Location = new System.Drawing.Point(428, 248);
-			this.chbSpicy.Name = "chbSpicy";
-			this.chbSpicy.Size = new System.Drawing.Size(57, 21);
-			this.chbSpicy.TabIndex = 3;
-			this.chbSpicy.Text = "加辣";
-			this.chbSpicy.UseVisualStyleBackColor = true;
+			this.btnOrderAdd.Click += new System.EventHandler(this.btnOrderAdd_Click_1);
 			// 
 			// labelOrderNumber
 			// 
 			this.labelOrderNumber.AutoSize = true;
-			this.labelOrderNumber.Location = new System.Drawing.Point(491, 250);
+			this.labelOrderNumber.Font = new System.Drawing.Font("jf open 粉圓 2.1", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.labelOrderNumber.Location = new System.Drawing.Point(536, 151);
 			this.labelOrderNumber.Name = "labelOrderNumber";
-			this.labelOrderNumber.Size = new System.Drawing.Size(53, 17);
+			this.labelOrderNumber.Size = new System.Drawing.Size(73, 24);
 			this.labelOrderNumber.TabIndex = 2;
 			this.labelOrderNumber.Text = "數量：";
 			this.labelOrderNumber.Click += new System.EventHandler(this.labelOrderNumber_Click);
 			// 
-			// numericUpDown1
+			// nudQuantity
 			// 
-			this.numericUpDown1.Location = new System.Drawing.Point(550, 246);
-			this.numericUpDown1.Name = "numericUpDown1";
-			this.numericUpDown1.Size = new System.Drawing.Size(41, 25);
-			this.numericUpDown1.TabIndex = 1;
+			this.nudQuantity.Font = new System.Drawing.Font("jf open 粉圓 2.1", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.nudQuantity.Location = new System.Drawing.Point(615, 147);
+			this.nudQuantity.Name = "nudQuantity";
+			this.nudQuantity.Size = new System.Drawing.Size(50, 32);
+			this.nudQuantity.TabIndex = 1;
+			this.nudQuantity.ValueChanged += new System.EventHandler(this.nudQuantity_ValueChanged);
 			// 
 			// product_LBSMSBindingSource
 			// 
@@ -428,7 +527,7 @@
 			this.gbOrderAmount.Controls.Add(this.labelTotalTitle);
 			this.gbOrderAmount.Controls.Add(this.labelDiscountTitle);
 			this.gbOrderAmount.Controls.Add(this.labelSubTotalTitle);
-			this.gbOrderAmount.Location = new System.Drawing.Point(262, 444);
+			this.gbOrderAmount.Location = new System.Drawing.Point(262, 459);
 			this.gbOrderAmount.Name = "gbOrderAmount";
 			this.gbOrderAmount.Size = new System.Drawing.Size(397, 138);
 			this.gbOrderAmount.TabIndex = 26;
@@ -439,17 +538,23 @@
 			// labelTotal
 			// 
 			this.labelTotal.AutoSize = true;
+			this.labelTotal.BackColor = System.Drawing.Color.Transparent;
 			this.labelTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.labelTotal.Font = new System.Drawing.Font("jf open 粉圓 2.1", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.labelTotal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.labelTotal.Font = new System.Drawing.Font("jf open 粉圓 2.1", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.labelTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(140)))), ((int)(((byte)(33)))));
 			this.labelTotal.Location = new System.Drawing.Point(118, 94);
 			this.labelTotal.Name = "labelTotal";
-			this.labelTotal.Size = new System.Drawing.Size(2, 24);
+			this.labelTotal.Size = new System.Drawing.Size(2, 26);
 			this.labelTotal.TabIndex = 5;
 			// 
 			// labelDiscount
 			// 
 			this.labelDiscount.AutoSize = true;
+			this.labelDiscount.BackColor = System.Drawing.Color.Transparent;
 			this.labelDiscount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.labelDiscount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.labelDiscount.ForeColor = System.Drawing.Color.Red;
 			this.labelDiscount.Location = new System.Drawing.Point(118, 65);
 			this.labelDiscount.Name = "labelDiscount";
 			this.labelDiscount.Size = new System.Drawing.Size(2, 19);
@@ -458,7 +563,9 @@
 			// labelSubtotal
 			// 
 			this.labelSubtotal.AutoSize = true;
+			this.labelSubtotal.BackColor = System.Drawing.Color.Transparent;
 			this.labelSubtotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.labelSubtotal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.labelSubtotal.Location = new System.Drawing.Point(118, 36);
 			this.labelSubtotal.Name = "labelSubtotal";
 			this.labelSubtotal.Size = new System.Drawing.Size(2, 19);
@@ -493,36 +600,37 @@
 			this.labelSubTotalTitle.TabIndex = 0;
 			this.labelSubTotalTitle.Text = "小計：";
 			// 
-			// btnOrderClear
-			// 
-			this.btnOrderClear.BackColor = System.Drawing.SystemColors.AppWorkspace;
-			this.btnOrderClear.FlatAppearance.BorderSize = 0;
-			this.btnOrderClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnOrderClear.Font = new System.Drawing.Font("jf open 粉圓 2.1", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.btnOrderClear.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(254)))), ((int)(((byte)(254)))));
-			this.btnOrderClear.Location = new System.Drawing.Point(3, 3);
-			this.btnOrderClear.Name = "btnOrderClear";
-			this.btnOrderClear.Size = new System.Drawing.Size(142, 63);
-			this.btnOrderClear.TabIndex = 27;
-			this.btnOrderClear.Text = "清除訂單";
-			this.btnOrderClear.UseVisualStyleBackColor = false;
-			// 
 			// tableLayoutPanel1
 			// 
 			this.tableLayoutPanel1.ColumnCount = 2;
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel1.Controls.Add(this.btnOrderClear, 0, 0);
+			this.tableLayoutPanel1.Controls.Add(this.btnSubmitOrder, 1, 1);
 			this.tableLayoutPanel1.Controls.Add(this.btnOrderPre, 1, 0);
-			this.tableLayoutPanel1.Controls.Add(this.btnOrderOK, 1, 1);
-			this.tableLayoutPanel1.Controls.Add(this.btnOrderMemberCheck, 0, 1);
-			this.tableLayoutPanel1.Location = new System.Drawing.Point(690, 444);
+			this.tableLayoutPanel1.Controls.Add(this.btnOrderMemberCheck, 0, 0);
+			this.tableLayoutPanel1.Controls.Add(this.label1, 0, 1);
+			this.tableLayoutPanel1.Location = new System.Drawing.Point(690, 459);
 			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
 			this.tableLayoutPanel1.RowCount = 2;
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tableLayoutPanel1.Size = new System.Drawing.Size(297, 138);
 			this.tableLayoutPanel1.TabIndex = 28;
+			// 
+			// btnSubmitOrder
+			// 
+			this.btnSubmitOrder.BackColor = System.Drawing.Color.Red;
+			this.btnSubmitOrder.FlatAppearance.BorderSize = 0;
+			this.btnSubmitOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnSubmitOrder.Font = new System.Drawing.Font("jf open 粉圓 2.1", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.btnSubmitOrder.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(254)))), ((int)(((byte)(254)))));
+			this.btnSubmitOrder.Location = new System.Drawing.Point(151, 72);
+			this.btnSubmitOrder.Name = "btnSubmitOrder";
+			this.btnSubmitOrder.Size = new System.Drawing.Size(143, 63);
+			this.btnSubmitOrder.TabIndex = 29;
+			this.btnSubmitOrder.Text = "送出訂單";
+			this.btnSubmitOrder.UseVisualStyleBackColor = false;
+			this.btnSubmitOrder.Click += new System.EventHandler(this.btnSubmitOrder_Click);
 			// 
 			// btnOrderPre
 			// 
@@ -537,20 +645,7 @@
 			this.btnOrderPre.TabIndex = 28;
 			this.btnOrderPre.Text = "訂單預覽";
 			this.btnOrderPre.UseVisualStyleBackColor = false;
-			// 
-			// btnOrderOK
-			// 
-			this.btnOrderOK.BackColor = System.Drawing.Color.Red;
-			this.btnOrderOK.FlatAppearance.BorderSize = 0;
-			this.btnOrderOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnOrderOK.Font = new System.Drawing.Font("jf open 粉圓 2.1", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.btnOrderOK.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(254)))), ((int)(((byte)(254)))));
-			this.btnOrderOK.Location = new System.Drawing.Point(151, 72);
-			this.btnOrderOK.Name = "btnOrderOK";
-			this.btnOrderOK.Size = new System.Drawing.Size(143, 63);
-			this.btnOrderOK.TabIndex = 29;
-			this.btnOrderOK.Text = "送出訂單";
-			this.btnOrderOK.UseVisualStyleBackColor = false;
+			this.btnOrderPre.Click += new System.EventHandler(this.btnOrderPreview_Click);
 			// 
 			// btnOrderMemberCheck
 			// 
@@ -559,12 +654,29 @@
 			this.btnOrderMemberCheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnOrderMemberCheck.Font = new System.Drawing.Font("jf open 粉圓 2.1", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.btnOrderMemberCheck.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(254)))), ((int)(((byte)(254)))));
-			this.btnOrderMemberCheck.Location = new System.Drawing.Point(3, 72);
+			this.btnOrderMemberCheck.Location = new System.Drawing.Point(3, 3);
 			this.btnOrderMemberCheck.Name = "btnOrderMemberCheck";
 			this.btnOrderMemberCheck.Size = new System.Drawing.Size(142, 63);
 			this.btnOrderMemberCheck.TabIndex = 30;
 			this.btnOrderMemberCheck.Text = "點數確認";
 			this.btnOrderMemberCheck.UseVisualStyleBackColor = false;
+			this.btnOrderMemberCheck.Click += new System.EventHandler(this.btnPointCheck_Click);
+			// 
+			// label1
+			// 
+			this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.label1.AutoSize = true;
+			this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+			this.label1.Font = new System.Drawing.Font("jf open 粉圓 2.1", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.label1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+			this.label1.Location = new System.Drawing.Point(3, 69);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(142, 69);
+			this.label1.TabIndex = 31;
+			this.label1.Text = "【記得提醒顧客】\r\n均附紫菜湯及珍珠奶茶\r\n生日當月均打８折\r\n當天完全免費(限一筆)\r\n";
+			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// btnExit
 			// 
@@ -618,9 +730,12 @@
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.gbOrderInfo.ResumeLayout(false);
 			this.gbOrderInfo.PerformLayout();
+			this.panel2.ResumeLayout(false);
+			this.panel2.PerformLayout();
 			this.gbOrderChoose.ResumeLayout(false);
 			this.gbOrderChoose.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.dgvProductList)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.nudQuantity)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.product_LBSMSBindingSource)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.bentoSystemDataSet)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.bentoSystemDataSet2)).EndInit();
@@ -631,6 +746,7 @@
 			this.gbOrderAmount.ResumeLayout(false);
 			this.gbOrderAmount.PerformLayout();
 			this.tableLayoutPanel1.ResumeLayout(false);
+			this.tableLayoutPanel1.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
 			this.ResumeLayout(false);
 
@@ -649,19 +765,17 @@
 		private System.Windows.Forms.PictureBox pictureBox3;
 		private System.Windows.Forms.Button btnExit;
 		private System.Windows.Forms.GroupBox gbOrderInfo;
-		private System.Windows.Forms.TextBox txtNonMember;
+		private System.Windows.Forms.TextBox txtInsertOrderName;
 		private System.Windows.Forms.RadioButton rbtnNonMember;
 		private System.Windows.Forms.RadioButton rbtnIsMember;
-		private System.Windows.Forms.TextBox textOrderPhone;
+		private System.Windows.Forms.TextBox txtOrderPhone;
 		private System.Windows.Forms.Label labelOrderPhone;
 		private System.Windows.Forms.Label labelOrderType;
 		private BentoSystemDataSet2 bentoSystemDataSet2;
 		private System.Windows.Forms.BindingSource orderDataLBSMSBindingSource;
 		private BentoSystemDataSet2TableAdapters.OrderData_LBSMSTableAdapter orderData_LBSMSTableAdapter;
 		private System.Windows.Forms.BindingSource orderDataLBSMSBindingSource1;
-		private System.Windows.Forms.ComboBox cbOrderType;
 		private System.Windows.Forms.Label labelOrderDateTime;
-		private System.Windows.Forms.Label labelOrderTime;
 		private System.Windows.Forms.GroupBox gbOrderChoose;
 		private BentoSystemDataSet3 bentoSystemDataSet3;
 		private System.Windows.Forms.BindingSource orderItem_LBSMSBindingSource;
@@ -670,9 +784,7 @@
 		private BentoSystemDataSet bentoSystemDataSet;
 		private System.Windows.Forms.BindingSource product_LBSMSBindingSource;
 		private System.Windows.Forms.Label labelOrderNumber;
-		private System.Windows.Forms.NumericUpDown numericUpDown1;
-		private System.Windows.Forms.Button btnOrderAdd;
-		private System.Windows.Forms.CheckBox chbSpicy;
+		private System.Windows.Forms.NumericUpDown nudQuantity;
 		private System.Windows.Forms.GroupBox gbOrderAmount;
 		private System.Windows.Forms.Label labelTotalTitle;
 		private System.Windows.Forms.Label labelDiscountTitle;
@@ -680,10 +792,22 @@
 		private System.Windows.Forms.Label labelSubtotal;
 		private System.Windows.Forms.Label labelTotal;
 		private System.Windows.Forms.Label labelDiscount;
-		private System.Windows.Forms.Button btnOrderClear;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
 		private System.Windows.Forms.Button btnOrderPre;
-		private System.Windows.Forms.Button btnOrderOK;
 		private System.Windows.Forms.Button btnOrderMemberCheck;
+		private System.Windows.Forms.ComboBox cbMemberList;
+		private System.Windows.Forms.RadioButton rbtnDelivery;
+		private System.Windows.Forms.RadioButton rbtnPickup;
+		private System.Windows.Forms.Timer timer1;
+		private System.Windows.Forms.Label labelOrderTime;
+		private System.Windows.Forms.DataGridView dgvProductList;
+		private System.Windows.Forms.Button btnOrderAdd;
+		private System.Windows.Forms.Panel panel2;
+		private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
+		private System.Windows.Forms.DataGridViewTextBoxColumn ProductPrice;
+		private System.Windows.Forms.DataGridViewTextBoxColumn StockQuantity;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Subtotal;
+		private System.Windows.Forms.Button btnSubmitOrder;
+		private System.Windows.Forms.Label label1;
 	}
 }

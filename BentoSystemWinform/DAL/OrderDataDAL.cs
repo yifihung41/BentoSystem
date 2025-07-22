@@ -40,5 +40,29 @@ namespace BentoSystemWinform.DAL
 			}
 		}
 
+
+		public int InsertOrderData(OrderDataModel order)
+		{
+			int newOrderId = 0;
+			string sql = @"
+        INSERT INTO OrderData_LBSMS (OrderDate, OrderType, EmployeeId, MemberId)
+        VALUES (@OrderDate, @OrderType, @EmployeeId, @MemberId);
+        SELECT CAST(SCOPE_IDENTITY() AS int);";
+
+			using (SqlConnection conn = new SqlConnection(connectionString))
+			using (SqlCommand cmd = new SqlCommand(sql, conn))
+			{
+				cmd.Parameters.AddWithValue("@OrderDate", order.OrderDate);
+				cmd.Parameters.AddWithValue("@OrderType", order.OrderType);
+				cmd.Parameters.AddWithValue("@EmployeeId", order.EmployeeId);
+				cmd.Parameters.AddWithValue("@MemberId", order.MemberId);
+
+				conn.Open();
+				newOrderId = (int)cmd.ExecuteScalar();
+			}
+
+			return newOrderId;
+		}
+
 	}
 }

@@ -118,19 +118,22 @@ namespace BentoSystemWinform
 		// 側邊欄會員管理介面按鈕
 		private void btnMember_Click(object sender, EventArgs e)
 		{
-			this.Hide();
-			MemberForm mf = new MemberForm(LoginEmployee); // 傳遞 LoginEmployee 作為參數
-			mf.FormClosed += (s, args) => this.Show();
-			mf.Show();
+			
+			using (MemberForm mf = new MemberForm(LoginEmployee)) // 傳遞 LoginEmployee 作為參數
+			{
+				mf.ShowDialog();
+			} 
+			this.Show();
 		}
 
 		// 側邊欄訂單管理介面按鈕
 		private void btnOrders_Click(object sender, EventArgs e)
 		{
-			this.Hide();
-			OrderForm of = new OrderForm(LoginEmployee);
-			of.FormClosed += (s, args) => this.Show();
-			of.Show();
+			using (OrderForm of = new OrderForm(LoginEmployee))
+			{
+				of.ShowDialog();
+			}
+			this.Show();
 		}
 
 		// 登出按鈕
@@ -152,7 +155,7 @@ namespace BentoSystemWinform
 			else
 			{
 				// 使用者關閉登入畫面、或取消，整個關掉
-				this.Close();
+				this.Hide();
 			}
 		}
 

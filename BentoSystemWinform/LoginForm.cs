@@ -127,13 +127,23 @@ namespace BentoSystemWinform
 			welcomeForm.ShowDialog();
 
 			this.DialogResult = DialogResult.OK; // 告訴 Program.cs 登入成功
-			this.Close(); // 關閉登入視窗
+			this.Hide(); // 關閉登入視窗
 		}
 
 		//登入系統離開按鈕點擊事件
 		private void btnExit_Click(object sender, EventArgs e)
 		{
-			Application.Exit(); // 關閉系統
+			ExitConfirmForm exitConfirmForm = new ExitConfirmForm();
+			DialogResult result = exitConfirmForm.ShowDialog();
+
+			if (result == DialogResult.OK)
+			{
+				Application.Exit(); // 關閉整個程式
+			}
+			else if (result == DialogResult.Cancel)
+			{
+				exitConfirmForm.Close();// 只關閉此小視窗，繼續使用主視窗
+			}
 		}
 
 		

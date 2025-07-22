@@ -149,10 +149,12 @@ namespace BentoSystemWinform
 		// 側邊欄訂單管理介面按鈕
 		private void btnOrders_Click(object sender, EventArgs e)
 		{
-			this.Hide();
-			OrderForm of = new OrderForm(LoginEmployee);
-			of.FormClosed += (s, args) => this.Show();
-			of.Show();
+			this.Hide();  // 只隱藏，不關閉
+			using (OrderForm of = new OrderForm(LoginEmployee))
+			{
+				of.ShowDialog();  // Modal 視窗
+			}
+			this.Close(); 
 		}
 
 		// 登出按鈕

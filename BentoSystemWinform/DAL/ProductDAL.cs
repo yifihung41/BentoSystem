@@ -1,6 +1,7 @@
 ﻿using BentoSystemWinform.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -14,9 +15,10 @@ namespace BentoSystemWinform.DAL
 	{
 		private string connectionString = @"Data Source = desktop-paksetb\sqlexpress;Database = BentoSystem;Trusted_Connection = True;";
 
-		//取得所有商品資料
-		public List<ProductModel> GetAllProducts() 
-		{ 
+
+		// 取得產品清單（資料層）
+		public List<ProductModel> GetAllProducts()
+		{
 			List<ProductModel> list = new List<ProductModel>();
 
 			using (SqlConnection conn = new SqlConnection(connectionString))
@@ -37,11 +39,11 @@ namespace BentoSystemWinform.DAL
 						IsOutofstock = reader["IsOutOfStock"] != DBNull.Value && Convert.ToBoolean(reader["IsOutOfStock"]),
 						ProductDesc = reader["ProductDesc"]?.ToString() ?? "",
 						ImagePath = reader["ImagePath"]?.ToString() ?? ""
-					 };
-					list.Add(p); // 修正：將建立的 ProductModel 加入清單
+					};
+					list.Add(p);
 				}
 			}
-			return list; // 修正：確保方法返回清單
+			return list;
 		}
 
 		//新增商品
@@ -139,5 +141,19 @@ namespace BentoSystemWinform.DAL
 			return null; // 找不到就傳回 null
 		}
 
+		// 更新商品庫存數量
+		public void UpdateProductStock(int productId, int quantityToDeduct)
+		{
+			using (SqlConnection conn = new SqlConnection(connectionString))
+			{
+				string sql = "UPDATE Product_LBSMS SET StockQuantity = StockQuantity - @Quantity WHERE ProductId = @ProductId";
+				SqlCommand cmd = new SqlCommand(sql, conn);
+				cmd.Parameters.AddWithValue("@Quantity", quantityToDeduct);
+				cmd.Parameters.AddWithValue("@ProductId", productId);
+
+				conn.Open();
+				cmd.ExecuteNonQuery();
+			}
+		}
 	}
 }

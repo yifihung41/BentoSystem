@@ -104,10 +104,10 @@ namespace BentoSystemWinform
 		// 側邊欄產品管理介面按鈕
 		private void btnProducts_Click(object sender, EventArgs e)
 		{
-			this.Hide();
-			ProductsForm pf = new ProductsForm(LoginEmployee); // 傳遞 LoginEmployee 作為參數
-			pf.FormClosed += (s, args) => this.Show(); // 正確顯示主視窗
-			pf.Show();
+			ProductsForm pf = new ProductsForm(LoginEmployee);
+			pf.ShowDialog();
+			this.Show();  // 隱藏目前畫面
+			pf.Hide();	
 		}
 
 		// 側邊欄會員管理介面按鈕
@@ -119,10 +119,10 @@ namespace BentoSystemWinform
 		// 側邊欄訂單管理介面按鈕
 		private void btnOrders_Click(object sender, EventArgs e)
 		{
-			this.Hide();
 			OrderForm of = new OrderForm(LoginEmployee);
-			of.ShowDialog();  // Modal 顯示
-			this.Show();
+			of.ShowDialog(); // 以模態方式顯示 OrderForm，MainForm 會自動禁用
+			this.Show();     // OrderForm 關閉後，重新顯示 MainForm
+			of.Hide();    // 【建議新增】釋放 OrderForm 的資源
 		}
 
 		// 登出按鈕
@@ -143,7 +143,7 @@ namespace BentoSystemWinform
 			else
 			{
 				// 使用者關閉登入畫面、或取消，整個關掉
-				this.Close();
+				this.Hide();
 			}
 		}
 
@@ -192,8 +192,7 @@ namespace BentoSystemWinform
 			txtMemberNumber.Text = member.MemberId.ToString();
 			txtMemberName.Text = member.MemberName;
 			txtMemberPhone.Text = member.MemberPhone;
-			txtBirthday.Text = member.Birthday;
-			txtPoints.Text = member.Points.ToString();
+			txtBirthday.Text = member.Birthday.ToString("yyyy/MM/dd"); txtPoints.Text = member.Points.ToString();
 			txtMemberAddress.Text = member.MemberAddress;
 		}
 
@@ -277,7 +276,7 @@ namespace BentoSystemWinform
 			{
 				MemberName = txtMemberName.Text.Trim(),
 				MemberPhone = txtMemberPhone.Text.Trim(),
-				Birthday = txtBirthday.Text.Trim(),
+				Birthday = DateTime.TryParse(txtBirthday.Text.Trim(), out DateTime birthday) ? birthday : DateTime.MinValue,
 				Points = int.TryParse(txtPoints.Text.Trim(), out int pts) ? pts : 0,
 				MemberAddress = txtMemberAddress.Text.Trim()
 			};

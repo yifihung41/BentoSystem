@@ -21,7 +21,7 @@ namespace BentoSystemWinform
 		{
 			//只關閉此小視窗
 			this.DialogResult = DialogResult.Cancel;
-			this.Close();
+			this.Hide();
 		}
 
 		private void btnExit_Click(object sender, EventArgs e)

@@ -34,11 +34,11 @@ namespace BentoSystemWinform
 		{
 			timer.Stop(); // 停止計時器
 			timer.Dispose(); // 釋放資源
-			this.Close(); // 關閉歡迎視窗
+			this.Hide(); // 關閉歡迎視窗
 		}
 		private void btnExit_Click(object sender, EventArgs e)
 		{
-			this.Close(); // 手動點按鈕離開
+			this.Hide(); // 手動點按鈕離開
 		}
 		//private void WelcomeForm_Load(object sender, EventArgs e)
 		//{

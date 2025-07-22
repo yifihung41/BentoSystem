@@ -17,6 +17,13 @@ namespace BentoSystemWinform.BLL
 		// 取得所有商品列表
 		public List<ProductModel> GetProductList()
 		{
+			var products = Pdal.GetAllProducts();
+
+			// 自動勾選 IsOutOfStock
+			foreach (var p in products)
+			{
+				p.IsOutofstock = (p.StockQuantity <= 0);
+			}
 			return Pdal.GetAllProducts();
 		}
 
@@ -43,5 +50,12 @@ namespace BentoSystemWinform.BLL
 		{
 			return Pdal.GetProductByName(keyword);
 		}
+
+		// 更新商品庫存數量
+		public void DeductStock(int productId, int quantity)
+		{
+			Pdal.UpdateProductStock(productId, quantity);
+		}
+
 	}
 }

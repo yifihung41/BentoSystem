@@ -12,9 +12,12 @@ namespace BentoSystemWinform
 {
 	public partial class PointCheckWindow : Form
 	{
-		public PointCheckWindow()
+		public PointCheckWindow(string memberName, int points)
 		{
 			InitializeComponent();
+
+			labelPCName.Text = memberName;
+			labelPCPoints.Text = points.ToString();
 		}
 
 		private void gbPointCheck_Enter(object sender, EventArgs e)

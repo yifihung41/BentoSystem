@@ -29299,10 +29299,22 @@
         AAAAALYbvuj/AYJnl/k1XC/4AAAAAElFTkSuQmCC
 </value>
   </data>
+  <metadata name="ProductName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="ProductPrice.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="StockQuantity.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Subtotal.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="btnOrderAdd.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DgAACw4BQL7hQQAAALxJREFUOE+t0k8LAUEYgPEpUi4ODjgoZ1fKEQe5KMonkHITB0UOlJKb4iM4+g6O
+        DAAACwwBP0AiyAAAALxJREFUOE+t0k8LAUEYgPEpUi4ODjgoZ1fKEQe5KMonkHITB0UOlJKb4iM4+g6O
         PpjnNaO2mdlpW/vUr3l3a/9Nq7Kogh2W36M/OiKvx3TNMMcggSac2jjDd4HtBqccDnoMVoTsmbeTWUN1
         MNKjW5IbLFDXo9seU/i+WwxxR2xjbOC7WPQhexBbGWs9pquEN16QH0t2++eBJ+QtY5OnV1HDSk5Eulir
         tx62RldORLpiYtZgDcOugJZZs0qpD5yxHEbIvcXvAAAAAElFTkSuQmCC
@@ -29310,9 +29322,6 @@
   </data>
   <metadata name="product_LBSMSBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 91</value>
-  </metadata>
-  <metadata name="bentoSystemDataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>666, 54</value>
   </metadata>
   <metadata name="bentoSystemDataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>666, 54</value>
@@ -29675,6 +29684,12 @@
         sGDBgsX3HYsW/X888aivi1rzDwAAAABJRU5ErkJggg==
 </value>
   </data>
+  <metadata name="timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>242, 91</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>60</value>
+  </metadata>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAICAAAAEAIACoEAAAFgAAACgAAAAgAAAAQAAAAAEAIAAAAAAAABAAAA47AAAOOwAAAAAAAAAA

@@ -30,113 +30,116 @@
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OrderLastCheckForm));
 			this.gbOrderLastCheck = new System.Windows.Forms.GroupBox();
-			this.dgvOrderLastCheck = new System.Windows.Forms.DataGridView();
-			this.labelOrderLastCheck = new System.Windows.Forms.Label();
-			this.labelOrderLastCheckTitle = new System.Windows.Forms.Label();
-			this.btnOrderLastCheckBack = new System.Windows.Forms.Button();
-			this.btnOrderLastCheckOK = new System.Windows.Forms.Button();
+			this.labelMode = new System.Windows.Forms.Label();
+			this.btnSubmit = new System.Windows.Forms.Button();
+			this.btnBack = new System.Windows.Forms.Button();
+			this.labelTotalAmount = new System.Windows.Forms.Label();
+			this.dgvOrderDetails = new System.Windows.Forms.DataGridView();
 			this.gbOrderLastCheck.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dgvOrderLastCheck)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.dgvOrderDetails)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// gbOrderLastCheck
 			// 
-			this.gbOrderLastCheck.Controls.Add(this.btnOrderLastCheckOK);
-			this.gbOrderLastCheck.Controls.Add(this.btnOrderLastCheckBack);
-			this.gbOrderLastCheck.Controls.Add(this.labelOrderLastCheck);
-			this.gbOrderLastCheck.Controls.Add(this.labelOrderLastCheckTitle);
-			this.gbOrderLastCheck.Controls.Add(this.dgvOrderLastCheck);
+			this.gbOrderLastCheck.Controls.Add(this.labelMode);
+			this.gbOrderLastCheck.Controls.Add(this.btnSubmit);
+			this.gbOrderLastCheck.Controls.Add(this.btnBack);
+			this.gbOrderLastCheck.Controls.Add(this.labelTotalAmount);
+			this.gbOrderLastCheck.Controls.Add(this.dgvOrderDetails);
 			this.gbOrderLastCheck.Font = new System.Drawing.Font("jf open 粉圓 2.1", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.gbOrderLastCheck.Location = new System.Drawing.Point(25, 24);
 			this.gbOrderLastCheck.Name = "gbOrderLastCheck";
-			this.gbOrderLastCheck.Size = new System.Drawing.Size(271, 383);
+			this.gbOrderLastCheck.Size = new System.Drawing.Size(431, 410);
 			this.gbOrderLastCheck.TabIndex = 0;
 			this.gbOrderLastCheck.TabStop = false;
-			this.gbOrderLastCheck.Text = "訂單最終確認";
-			this.gbOrderLastCheck.Enter += new System.EventHandler(this.gbOrderLastCheck_Enter);
 			// 
-			// dgvOrderLastCheck
+			// labelMode
 			// 
-			this.dgvOrderLastCheck.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-			this.dgvOrderLastCheck.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dgvOrderLastCheck.Location = new System.Drawing.Point(24, 32);
-			this.dgvOrderLastCheck.Name = "dgvOrderLastCheck";
-			this.dgvOrderLastCheck.RowTemplate.Height = 24;
-			this.dgvOrderLastCheck.Size = new System.Drawing.Size(222, 234);
-			this.dgvOrderLastCheck.TabIndex = 0;
+			this.labelMode.AutoSize = true;
+			this.labelMode.BackColor = System.Drawing.Color.Tomato;
+			this.labelMode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(254)))), ((int)(((byte)(254)))));
+			this.labelMode.Location = new System.Drawing.Point(24, -2);
+			this.labelMode.Name = "labelMode";
+			this.labelMode.Size = new System.Drawing.Size(0, 22);
+			this.labelMode.TabIndex = 7;
 			// 
-			// labelOrderLastCheck
+			// btnSubmit
 			// 
-			this.labelOrderLastCheck.AutoSize = true;
-			this.labelOrderLastCheck.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(140)))), ((int)(((byte)(33)))));
-			this.labelOrderLastCheck.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(254)))), ((int)(((byte)(254)))));
-			this.labelOrderLastCheck.Location = new System.Drawing.Point(167, 285);
-			this.labelOrderLastCheck.Name = "labelOrderLastCheck";
-			this.labelOrderLastCheck.Size = new System.Drawing.Size(0, 22);
-			this.labelOrderLastCheck.TabIndex = 4;
+			this.btnSubmit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(140)))), ((int)(((byte)(33)))));
+			this.btnSubmit.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+			this.btnSubmit.FlatAppearance.BorderSize = 0;
+			this.btnSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnSubmit.Font = new System.Drawing.Font("jf open 粉圓 2.1", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.btnSubmit.ForeColor = System.Drawing.Color.White;
+			this.btnSubmit.Image = ((System.Drawing.Image)(resources.GetObject("btnSubmit.Image")));
+			this.btnSubmit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnSubmit.Location = new System.Drawing.Point(277, 330);
+			this.btnSubmit.Name = "btnSubmit";
+			this.btnSubmit.Size = new System.Drawing.Size(113, 38);
+			this.btnSubmit.TabIndex = 6;
+			this.btnSubmit.Text = "  送出訂單";
+			this.btnSubmit.UseVisualStyleBackColor = false;
+			this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
 			// 
-			// labelOrderLastCheckTitle
+			// btnBack
 			// 
-			this.labelOrderLastCheckTitle.AutoSize = true;
-			this.labelOrderLastCheckTitle.Font = new System.Drawing.Font("jf open 粉圓 2.1", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.labelOrderLastCheckTitle.Location = new System.Drawing.Point(22, 284);
-			this.labelOrderLastCheckTitle.Name = "labelOrderLastCheckTitle";
-			this.labelOrderLastCheckTitle.Size = new System.Drawing.Size(136, 24);
-			this.labelOrderLastCheckTitle.TabIndex = 3;
-			this.labelOrderLastCheckTitle.Text = "訂單總金額：";
+			this.btnBack.BackColor = System.Drawing.Color.DarkGray;
+			this.btnBack.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+			this.btnBack.FlatAppearance.BorderSize = 0;
+			this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnBack.Font = new System.Drawing.Font("jf open 粉圓 2.1", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.btnBack.ForeColor = System.Drawing.Color.White;
+			this.btnBack.Image = ((System.Drawing.Image)(resources.GetObject("btnBack.Image")));
+			this.btnBack.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnBack.Location = new System.Drawing.Point(24, 331);
+			this.btnBack.Name = "btnBack";
+			this.btnBack.Size = new System.Drawing.Size(70, 38);
+			this.btnBack.TabIndex = 5;
+			this.btnBack.Text = "  返回";
+			this.btnBack.UseVisualStyleBackColor = false;
+			this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
 			// 
-			// btnOrderLastCheckBack
+			// labelTotalAmount
 			// 
-			this.btnOrderLastCheckBack.BackColor = System.Drawing.Color.DarkGray;
-			this.btnOrderLastCheckBack.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-			this.btnOrderLastCheckBack.FlatAppearance.BorderSize = 0;
-			this.btnOrderLastCheckBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnOrderLastCheckBack.Font = new System.Drawing.Font("jf open 粉圓 2.1", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.btnOrderLastCheckBack.ForeColor = System.Drawing.Color.White;
-			this.btnOrderLastCheckBack.Image = ((System.Drawing.Image)(resources.GetObject("btnOrderLastCheckBack.Image")));
-			this.btnOrderLastCheckBack.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.btnOrderLastCheckBack.Location = new System.Drawing.Point(26, 325);
-			this.btnOrderLastCheckBack.Name = "btnOrderLastCheckBack";
-			this.btnOrderLastCheckBack.Size = new System.Drawing.Size(70, 38);
-			this.btnOrderLastCheckBack.TabIndex = 5;
-			this.btnOrderLastCheckBack.Text = "  返回";
-			this.btnOrderLastCheckBack.UseVisualStyleBackColor = false;
+			this.labelTotalAmount.AutoSize = true;
+			this.labelTotalAmount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(140)))), ((int)(((byte)(33)))));
+			this.labelTotalAmount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(254)))), ((int)(((byte)(254)))));
+			this.labelTotalAmount.Location = new System.Drawing.Point(24, 281);
+			this.labelTotalAmount.Name = "labelTotalAmount";
+			this.labelTotalAmount.Size = new System.Drawing.Size(0, 22);
+			this.labelTotalAmount.TabIndex = 4;
 			// 
-			// btnOrderLastCheckOK
+			// dgvOrderDetails
 			// 
-			this.btnOrderLastCheckOK.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(140)))), ((int)(((byte)(33)))));
-			this.btnOrderLastCheckOK.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-			this.btnOrderLastCheckOK.FlatAppearance.BorderSize = 0;
-			this.btnOrderLastCheckOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnOrderLastCheckOK.Font = new System.Drawing.Font("jf open 粉圓 2.1", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.btnOrderLastCheckOK.ForeColor = System.Drawing.Color.White;
-			this.btnOrderLastCheckOK.Image = ((System.Drawing.Image)(resources.GetObject("btnOrderLastCheckOK.Image")));
-			this.btnOrderLastCheckOK.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.btnOrderLastCheckOK.Location = new System.Drawing.Point(134, 325);
-			this.btnOrderLastCheckOK.Name = "btnOrderLastCheckOK";
-			this.btnOrderLastCheckOK.Size = new System.Drawing.Size(113, 38);
-			this.btnOrderLastCheckOK.TabIndex = 6;
-			this.btnOrderLastCheckOK.Text = "  送出訂單";
-			this.btnOrderLastCheckOK.UseVisualStyleBackColor = false;
+			this.dgvOrderDetails.AllowUserToAddRows = false;
+			this.dgvOrderDetails.AllowUserToDeleteRows = false;
+			this.dgvOrderDetails.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+			this.dgvOrderDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dgvOrderDetails.Location = new System.Drawing.Point(24, 28);
+			this.dgvOrderDetails.Name = "dgvOrderDetails";
+			this.dgvOrderDetails.ReadOnly = true;
+			this.dgvOrderDetails.RowTemplate.Height = 24;
+			this.dgvOrderDetails.Size = new System.Drawing.Size(366, 226);
+			this.dgvOrderDetails.TabIndex = 0;
 			// 
 			// OrderLastCheckForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 17F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(321, 435);
+			this.ClientSize = new System.Drawing.Size(489, 459);
 			this.Controls.Add(this.gbOrderLastCheck);
 			this.Font = new System.Drawing.Font("jf open 粉圓 2.1", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-			this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.Margin = new System.Windows.Forms.Padding(4);
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "OrderLastCheckForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-			this.Text = "阿萱便當後臺系統：訂單最終確認";
+			this.Text = "阿萱便當後臺系統：訂單預覽／確認";
 			this.gbOrderLastCheck.ResumeLayout(false);
 			this.gbOrderLastCheck.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dgvOrderLastCheck)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.dgvOrderDetails)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -144,10 +147,10 @@
 		#endregion
 
 		private System.Windows.Forms.GroupBox gbOrderLastCheck;
-		private System.Windows.Forms.DataGridView dgvOrderLastCheck;
-		private System.Windows.Forms.Label labelOrderLastCheck;
-		private System.Windows.Forms.Label labelOrderLastCheckTitle;
-		private System.Windows.Forms.Button btnOrderLastCheckOK;
-		private System.Windows.Forms.Button btnOrderLastCheckBack;
+		private System.Windows.Forms.DataGridView dgvOrderDetails;
+		private System.Windows.Forms.Label labelTotalAmount;
+		private System.Windows.Forms.Button btnSubmit;
+		private System.Windows.Forms.Button btnBack;
+		private System.Windows.Forms.Label labelMode;
 	}
 }

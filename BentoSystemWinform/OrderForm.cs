@@ -376,7 +376,7 @@ namespace BentoSystemWinform
 				UpdatedPoints = UpdatedPoints = member.Points + PointsEarned; ;  // 取得會員現有點數
 			}
 
-			
+
 
 			// 傳遞資料至訂單確認視窗
 			var confirmForm = new BentoSystemWinform.OrderLastCheckForm(

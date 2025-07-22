@@ -54,6 +54,10 @@
 			this.rbtnDelivery = new System.Windows.Forms.RadioButton();
 			this.gbOrderChoose = new System.Windows.Forms.GroupBox();
 			this.dgvProductList = new System.Windows.Forms.DataGridView();
+			this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ProductPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.StockQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ProductDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.btnOrderAdd = new System.Windows.Forms.Button();
 			this.labelOrderNumber = new System.Windows.Forms.Label();
 			this.nudQuantity = new System.Windows.Forms.NumericUpDown();
@@ -82,10 +86,7 @@
 			this.btnExit = new System.Windows.Forms.Button();
 			this.pictureBox3 = new System.Windows.Forms.PictureBox();
 			this.timer1 = new System.Windows.Forms.Timer(this.components);
-			this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.ProductPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.StockQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.ProductDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.label2 = new System.Windows.Forms.Label();
 			this.panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -130,6 +131,7 @@
 			this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			this.pictureBox2.TabIndex = 13;
 			this.pictureBox2.TabStop = false;
+			this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
 			// 
 			// btnLogout
 			// 
@@ -169,6 +171,7 @@
 			// 
 			this.btnMembers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
 			this.btnMembers.FlatAppearance.BorderSize = 0;
+			this.btnMembers.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(140)))), ((int)(((byte)(33)))));
 			this.btnMembers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnMembers.Font = new System.Drawing.Font("jf open 粉圓 2.1", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnMembers.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(41)))), ((int)(((byte)(48)))));
@@ -186,6 +189,7 @@
 			// 
 			this.btnProducts.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
 			this.btnProducts.FlatAppearance.BorderSize = 0;
+			this.btnProducts.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(140)))), ((int)(((byte)(33)))));
 			this.btnProducts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnProducts.Font = new System.Drawing.Font("jf open 粉圓 2.1", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnProducts.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(41)))), ((int)(((byte)(48)))));
@@ -203,6 +207,7 @@
 			// 
 			this.btnMainForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
 			this.btnMainForm.FlatAppearance.BorderSize = 0;
+			this.btnMainForm.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(140)))), ((int)(((byte)(33)))));
 			this.btnMainForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnMainForm.Font = new System.Drawing.Font("jf open 粉圓 2.1", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnMainForm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(41)))), ((int)(((byte)(48)))));
@@ -366,6 +371,7 @@
 			// 
 			// gbOrderChoose
 			// 
+			this.gbOrderChoose.Controls.Add(this.label2);
 			this.gbOrderChoose.Controls.Add(this.dgvProductList);
 			this.gbOrderChoose.Controls.Add(this.btnOrderAdd);
 			this.gbOrderChoose.Controls.Add(this.labelOrderNumber);
@@ -381,18 +387,62 @@
 			// 
 			dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
 			this.dgvProductList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+			this.dgvProductList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.dgvProductList.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
 			this.dgvProductList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgvProductList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ProductName,
             this.ProductPrice,
             this.StockQuantity,
             this.ProductDesc});
-			this.dgvProductList.Location = new System.Drawing.Point(23, 36);
+			this.dgvProductList.Location = new System.Drawing.Point(16, 30);
 			this.dgvProductList.Name = "dgvProductList";
 			this.dgvProductList.RowTemplate.Height = 24;
-			this.dgvProductList.Size = new System.Drawing.Size(535, 224);
+			this.dgvProductList.Size = new System.Drawing.Size(588, 196);
 			this.dgvProductList.TabIndex = 5;
 			this.dgvProductList.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvProductList_CellFormatting);
+			// 
+			// ProductName
+			// 
+			this.ProductName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+			this.ProductName.DataPropertyName = "ProductName";
+			this.ProductName.HeaderText = "品項";
+			this.ProductName.Name = "ProductName";
+			this.ProductName.ReadOnly = true;
+			this.ProductName.ToolTipText = "品項";
+			this.ProductName.Width = 63;
+			// 
+			// ProductPrice
+			// 
+			this.ProductPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+			this.ProductPrice.DataPropertyName = "ProductPrice";
+			this.ProductPrice.HeaderText = "單價";
+			this.ProductPrice.Name = "ProductPrice";
+			this.ProductPrice.ReadOnly = true;
+			this.ProductPrice.ToolTipText = "單價";
+			this.ProductPrice.Width = 63;
+			// 
+			// StockQuantity
+			// 
+			this.StockQuantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+			this.StockQuantity.DataPropertyName = "StockQuantity";
+			this.StockQuantity.HeaderText = "庫存";
+			this.StockQuantity.Name = "StockQuantity";
+			this.StockQuantity.ReadOnly = true;
+			this.StockQuantity.ToolTipText = "庫存";
+			this.StockQuantity.Width = 63;
+			// 
+			// ProductDesc
+			// 
+			this.ProductDesc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+			this.ProductDesc.DataPropertyName = "ProductDesc";
+			this.ProductDesc.HeaderText = "描述";
+			this.ProductDesc.Name = "ProductDesc";
+			this.ProductDesc.ReadOnly = true;
+			this.ProductDesc.ToolTipText = "描述";
+			this.ProductDesc.Width = 63;
 			// 
 			// btnOrderAdd
 			// 
@@ -402,9 +452,9 @@
 			this.btnOrderAdd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(254)))), ((int)(((byte)(254)))));
 			this.btnOrderAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnOrderAdd.Image")));
 			this.btnOrderAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.btnOrderAdd.Location = new System.Drawing.Point(577, 206);
+			this.btnOrderAdd.Location = new System.Drawing.Point(585, 233);
 			this.btnOrderAdd.Name = "btnOrderAdd";
-			this.btnOrderAdd.Size = new System.Drawing.Size(125, 54);
+			this.btnOrderAdd.Size = new System.Drawing.Size(125, 38);
 			this.btnOrderAdd.TabIndex = 4;
 			this.btnOrderAdd.Text = "   加入訂單";
 			this.btnOrderAdd.UseVisualStyleBackColor = false;
@@ -413,10 +463,10 @@
 			// labelOrderNumber
 			// 
 			this.labelOrderNumber.AutoSize = true;
-			this.labelOrderNumber.Font = new System.Drawing.Font("jf open 粉圓 2.1", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.labelOrderNumber.Location = new System.Drawing.Point(577, 152);
+			this.labelOrderNumber.Font = new System.Drawing.Font("jf open 粉圓 2.1", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.labelOrderNumber.Location = new System.Drawing.Point(610, 155);
 			this.labelOrderNumber.Name = "labelOrderNumber";
-			this.labelOrderNumber.Size = new System.Drawing.Size(73, 24);
+			this.labelOrderNumber.Size = new System.Drawing.Size(56, 18);
 			this.labelOrderNumber.TabIndex = 2;
 			this.labelOrderNumber.Text = "數量：";
 			this.labelOrderNumber.Click += new System.EventHandler(this.labelOrderNumber_Click);
@@ -424,7 +474,7 @@
 			// nudQuantity
 			// 
 			this.nudQuantity.Font = new System.Drawing.Font("jf open 粉圓 2.1", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.nudQuantity.Location = new System.Drawing.Point(652, 148);
+			this.nudQuantity.Location = new System.Drawing.Point(660, 176);
 			this.nudQuantity.Name = "nudQuantity";
 			this.nudQuantity.Size = new System.Drawing.Size(50, 32);
 			this.nudQuantity.TabIndex = 1;
@@ -635,7 +685,7 @@
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(142, 69);
 			this.label1.TabIndex = 31;
-			this.label1.Text = "【記得提醒顧客】\r\n均附紫菜湯及珍珠奶茶\r\n生日當月均打８折\r\n當天完全免費(限一筆)\r\n";
+			this.label1.Text = "【壽星我最大活動】\r\n會員生日\r\n當月均打８折\r\n當天完全免費(限一筆)\r\n";
 			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// btnExit
@@ -661,45 +711,15 @@
 			this.pictureBox3.TabIndex = 22;
 			this.pictureBox3.TabStop = false;
 			// 
-			// ProductName
+			// label2
 			// 
-			this.ProductName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-			this.ProductName.DataPropertyName = "ProductName";
-			this.ProductName.HeaderText = "品項";
-			this.ProductName.Name = "ProductName";
-			this.ProductName.ReadOnly = true;
-			this.ProductName.ToolTipText = "品項";
-			this.ProductName.Width = 63;
-			// 
-			// ProductPrice
-			// 
-			this.ProductPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-			this.ProductPrice.DataPropertyName = "ProductPrice";
-			this.ProductPrice.HeaderText = "單價";
-			this.ProductPrice.Name = "ProductPrice";
-			this.ProductPrice.ReadOnly = true;
-			this.ProductPrice.ToolTipText = "單價";
-			this.ProductPrice.Width = 63;
-			// 
-			// StockQuantity
-			// 
-			this.StockQuantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-			this.StockQuantity.DataPropertyName = "StockQuantity";
-			this.StockQuantity.HeaderText = "庫存";
-			this.StockQuantity.Name = "StockQuantity";
-			this.StockQuantity.ReadOnly = true;
-			this.StockQuantity.ToolTipText = "庫存";
-			this.StockQuantity.Width = 63;
-			// 
-			// ProductDesc
-			// 
-			this.ProductDesc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-			this.ProductDesc.DataPropertyName = "ProductDesc";
-			this.ProductDesc.HeaderText = "描述";
-			this.ProductDesc.Name = "ProductDesc";
-			this.ProductDesc.ReadOnly = true;
-			this.ProductDesc.ToolTipText = "描述";
-			this.ProductDesc.Width = 63;
+			this.label2.AutoSize = true;
+			this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+			this.label2.Location = new System.Drawing.Point(11, 230);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(338, 17);
+			this.label2.TabIndex = 6;
+			this.label2.Text = "＊每個便當均附紫菜蛋花湯、珍珠奶茶和焦糖布丁";
 			// 
 			// OrderForm
 			// 
@@ -809,5 +829,6 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn ProductPrice;
 		private System.Windows.Forms.DataGridViewTextBoxColumn StockQuantity;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ProductDesc;
+		private System.Windows.Forms.Label label2;
 	}
 }

@@ -111,6 +111,7 @@
 			this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			this.pictureBox2.TabIndex = 13;
 			this.pictureBox2.TabStop = false;
+			this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
 			// 
 			// btnLogout
 			// 
@@ -133,6 +134,7 @@
 			// 
 			this.btnOrders.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
 			this.btnOrders.FlatAppearance.BorderSize = 0;
+			this.btnOrders.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(140)))), ((int)(((byte)(33)))));
 			this.btnOrders.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnOrders.Font = new System.Drawing.Font("jf open 粉圓 2.1", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnOrders.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(41)))), ((int)(((byte)(48)))));
@@ -150,6 +152,7 @@
 			// 
 			this.btnMembers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
 			this.btnMembers.FlatAppearance.BorderSize = 0;
+			this.btnMembers.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(140)))), ((int)(((byte)(33)))));
 			this.btnMembers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnMembers.Font = new System.Drawing.Font("jf open 粉圓 2.1", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnMembers.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(41)))), ((int)(((byte)(48)))));
@@ -184,6 +187,7 @@
 			// 
 			this.btnMainForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
 			this.btnMainForm.FlatAppearance.BorderSize = 0;
+			this.btnMainForm.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(140)))), ((int)(((byte)(33)))));
 			this.btnMainForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnMainForm.Font = new System.Drawing.Font("jf open 粉圓 2.1", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnMainForm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(41)))), ((int)(((byte)(48)))));
@@ -258,7 +262,7 @@
 			this.gbProductDetails.Controls.Add(this.txtProductName);
 			this.gbProductDetails.Controls.Add(this.lableProductName);
 			this.gbProductDetails.Font = new System.Drawing.Font("jf open 粉圓 2.1", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.gbProductDetails.Location = new System.Drawing.Point(262, 327);
+			this.gbProductDetails.Location = new System.Drawing.Point(262, 339);
 			this.gbProductDetails.Name = "gbProductDetails";
 			this.gbProductDetails.Size = new System.Drawing.Size(737, 247);
 			this.gbProductDetails.TabIndex = 15;
@@ -405,7 +409,7 @@
 			this.btnProductAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnProductAdd.Font = new System.Drawing.Font("jf open 粉圓 2.1", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.btnProductAdd.ForeColor = System.Drawing.Color.White;
-			this.btnProductAdd.Location = new System.Drawing.Point(666, 298);
+			this.btnProductAdd.Location = new System.Drawing.Point(666, 304);
 			this.btnProductAdd.Name = "btnProductAdd";
 			this.btnProductAdd.Size = new System.Drawing.Size(75, 28);
 			this.btnProductAdd.TabIndex = 16;
@@ -419,7 +423,7 @@
 			this.btnProductUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnProductUpdate.Font = new System.Drawing.Font("jf open 粉圓 2.1", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.btnProductUpdate.ForeColor = System.Drawing.Color.White;
-			this.btnProductUpdate.Location = new System.Drawing.Point(752, 298);
+			this.btnProductUpdate.Location = new System.Drawing.Point(752, 304);
 			this.btnProductUpdate.Name = "btnProductUpdate";
 			this.btnProductUpdate.Size = new System.Drawing.Size(75, 28);
 			this.btnProductUpdate.TabIndex = 17;
@@ -433,7 +437,7 @@
 			this.btnProductDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnProductDelete.Font = new System.Drawing.Font("jf open 粉圓 2.1", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.btnProductDelete.ForeColor = System.Drawing.Color.White;
-			this.btnProductDelete.Location = new System.Drawing.Point(838, 298);
+			this.btnProductDelete.Location = new System.Drawing.Point(838, 304);
 			this.btnProductDelete.Name = "btnProductDelete";
 			this.btnProductDelete.Size = new System.Drawing.Size(75, 28);
 			this.btnProductDelete.TabIndex = 18;
@@ -447,7 +451,7 @@
 			this.btnProductSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnProductSave.Font = new System.Drawing.Font("jf open 粉圓 2.1", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.btnProductSave.ForeColor = System.Drawing.Color.White;
-			this.btnProductSave.Location = new System.Drawing.Point(924, 298);
+			this.btnProductSave.Location = new System.Drawing.Point(924, 304);
 			this.btnProductSave.Name = "btnProductSave";
 			this.btnProductSave.Size = new System.Drawing.Size(75, 28);
 			this.btnProductSave.TabIndex = 19;
@@ -492,6 +496,7 @@
 			// 
 			dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
 			this.dgvProduct.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+			this.dgvProduct.BackgroundColor = System.Drawing.SystemColors.Control;
 			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
 			dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
 			dataGridViewCellStyle4.Font = new System.Drawing.Font("jf open 粉圓 2.1", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -509,11 +514,10 @@
             this.StockQuantity,
             this.IsOutofstock,
             this.ProductDesc});
-			this.dgvProduct.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.dgvProduct.Location = new System.Drawing.Point(3, 21);
+			this.dgvProduct.Location = new System.Drawing.Point(13, 21);
 			this.dgvProduct.Name = "dgvProduct";
 			this.dgvProduct.RowTemplate.Height = 24;
-			this.dgvProduct.Size = new System.Drawing.Size(731, 176);
+			this.dgvProduct.Size = new System.Drawing.Size(707, 176);
 			this.dgvProduct.TabIndex = 0;
 			this.dgvProduct.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProduct_CellClick);
 			// 

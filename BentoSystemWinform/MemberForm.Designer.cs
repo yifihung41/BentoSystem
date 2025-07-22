@@ -112,6 +112,7 @@ namespace BentoSystemWinform
 			this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			this.pictureBox2.TabIndex = 13;
 			this.pictureBox2.TabStop = false;
+			this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
 			// 
 			// btnLogout
 			// 
@@ -134,6 +135,7 @@ namespace BentoSystemWinform
 			// 
 			this.btnOrders.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
 			this.btnOrders.FlatAppearance.BorderSize = 0;
+			this.btnOrders.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(140)))), ((int)(((byte)(33)))));
 			this.btnOrders.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnOrders.Font = new System.Drawing.Font("jf open 粉圓 2.1", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnOrders.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(41)))), ((int)(((byte)(48)))));
@@ -168,6 +170,7 @@ namespace BentoSystemWinform
 			// 
 			this.btnProducts.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
 			this.btnProducts.FlatAppearance.BorderSize = 0;
+			this.btnProducts.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(140)))), ((int)(((byte)(33)))));
 			this.btnProducts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnProducts.Font = new System.Drawing.Font("jf open 粉圓 2.1", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnProducts.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(41)))), ((int)(((byte)(48)))));
@@ -185,6 +188,7 @@ namespace BentoSystemWinform
 			// 
 			this.btnMainForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
 			this.btnMainForm.FlatAppearance.BorderSize = 0;
+			this.btnMainForm.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(140)))), ((int)(((byte)(33)))));
 			this.btnMainForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnMainForm.Font = new System.Drawing.Font("jf open 粉圓 2.1", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnMainForm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(41)))), ((int)(((byte)(48)))));
@@ -292,7 +296,7 @@ namespace BentoSystemWinform
 			this.btnMemberSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnMemberSave.Font = new System.Drawing.Font("jf open 粉圓 2.1", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.btnMemberSave.ForeColor = System.Drawing.Color.White;
-			this.btnMemberSave.Location = new System.Drawing.Point(924, 298);
+			this.btnMemberSave.Location = new System.Drawing.Point(924, 304);
 			this.btnMemberSave.Name = "btnMemberSave";
 			this.btnMemberSave.Size = new System.Drawing.Size(75, 28);
 			this.btnMemberSave.TabIndex = 29;
@@ -306,7 +310,7 @@ namespace BentoSystemWinform
 			this.btnMemberDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnMemberDelete.Font = new System.Drawing.Font("jf open 粉圓 2.1", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.btnMemberDelete.ForeColor = System.Drawing.Color.White;
-			this.btnMemberDelete.Location = new System.Drawing.Point(838, 298);
+			this.btnMemberDelete.Location = new System.Drawing.Point(838, 304);
 			this.btnMemberDelete.Name = "btnMemberDelete";
 			this.btnMemberDelete.Size = new System.Drawing.Size(75, 28);
 			this.btnMemberDelete.TabIndex = 28;
@@ -320,7 +324,7 @@ namespace BentoSystemWinform
 			this.btnMemberUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnMemberUpdate.Font = new System.Drawing.Font("jf open 粉圓 2.1", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.btnMemberUpdate.ForeColor = System.Drawing.Color.White;
-			this.btnMemberUpdate.Location = new System.Drawing.Point(752, 298);
+			this.btnMemberUpdate.Location = new System.Drawing.Point(752, 304);
 			this.btnMemberUpdate.Name = "btnMemberUpdate";
 			this.btnMemberUpdate.Size = new System.Drawing.Size(75, 28);
 			this.btnMemberUpdate.TabIndex = 27;
@@ -334,7 +338,7 @@ namespace BentoSystemWinform
 			this.btnMemberAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnMemberAdd.Font = new System.Drawing.Font("jf open 粉圓 2.1", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.btnMemberAdd.ForeColor = System.Drawing.Color.White;
-			this.btnMemberAdd.Location = new System.Drawing.Point(666, 298);
+			this.btnMemberAdd.Location = new System.Drawing.Point(666, 304);
 			this.btnMemberAdd.Name = "btnMemberAdd";
 			this.btnMemberAdd.Size = new System.Drawing.Size(75, 28);
 			this.btnMemberAdd.TabIndex = 26;
@@ -358,7 +362,7 @@ namespace BentoSystemWinform
 			this.gbMemberDetails.Controls.Add(this.txtMemberName);
 			this.gbMemberDetails.Controls.Add(this.lableMemberName);
 			this.gbMemberDetails.Font = new System.Drawing.Font("jf open 粉圓 2.1", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.gbMemberDetails.Location = new System.Drawing.Point(262, 327);
+			this.gbMemberDetails.Location = new System.Drawing.Point(262, 339);
 			this.gbMemberDetails.Name = "gbMemberDetails";
 			this.gbMemberDetails.Size = new System.Drawing.Size(737, 247);
 			this.gbMemberDetails.TabIndex = 31;
@@ -496,6 +500,7 @@ namespace BentoSystemWinform
 			// 
 			// dgvMember
 			// 
+			this.dgvMember.BackgroundColor = System.Drawing.SystemColors.Control;
 			this.dgvMember.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgvMember.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MemberId,
@@ -504,10 +509,10 @@ namespace BentoSystemWinform
             this.Birthday,
             this.Points,
             this.MemberAddress});
-			this.dgvMember.Location = new System.Drawing.Point(15, 21);
+			this.dgvMember.Location = new System.Drawing.Point(17, 21);
 			this.dgvMember.Name = "dgvMember";
 			this.dgvMember.RowTemplate.Height = 24;
-			this.dgvMember.Size = new System.Drawing.Size(705, 176);
+			this.dgvMember.Size = new System.Drawing.Size(709, 176);
 			this.dgvMember.TabIndex = 0;
 			this.dgvMember.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMember_CellClick);
 			// 

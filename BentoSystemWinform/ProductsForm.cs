@@ -170,25 +170,7 @@ namespace BentoSystemWinform
 		//關閉按鈕叫出確認視窗
 		private void btnExit_Click(object sender, EventArgs e)
 		{
-			//ExitConfirmForm exitConfirmForm = new ExitConfirmForm();
-			//DialogResult result = exitConfirmForm.ShowDialog();
-
-			//if (result == DialogResult.OK)
-			//{
-			//	Application.Exit(); // 關閉整個程式
-			//}
-			//else if (result == DialogResult.Cancel)
-			//{
-			//	exitConfirmForm.Close();// 只關閉此小視窗，繼續使用主視窗
-			//}
-			using (ExitConfirmForm exitConfirmForm = new ExitConfirmForm())
-			{
-				if (exitConfirmForm.ShowDialog() == DialogResult.OK)
-				{
-					Application.Exit(); // 使用者按確認，立即關閉程式
-				}
-				// 取消或關閉視窗，這裡不做事，繼續留在主視窗
-			}
+			MessageBox.Show("請先登出再關閉系統。", "系統提醒", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 		}
 
 
@@ -443,5 +425,10 @@ namespace BentoSystemWinform
 			pbProductImage.Image = null;
 		}
 
+		private void pictureBox2_Click(object sender, EventArgs e)
+		{
+			AboutForm aboutForm = new AboutForm();
+			aboutForm.ShowDialog();  // 彈出關於視窗
+		}
 	}
 }

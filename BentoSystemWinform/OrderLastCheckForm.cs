@@ -32,7 +32,7 @@ namespace BentoSystemWinform
 			BindData();
 			ConfigureButtons();
 
-			// ✅ 顯示基本資訊：會員資料、訂購方式、時間、點數
+			// 顯示詳細資訊
 			lblCustomerName.Text = $"姓名：{MemberName}";
 			lblCustomerPhone.Text = $"電話：{MemberPhone}";
 			lblOrderType.Text = $"訂購方式：{OrderType}";

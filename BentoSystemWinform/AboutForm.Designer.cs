@@ -36,7 +36,7 @@
 			// 
 			// pictureBox1
 			// 
-			this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+			this.pictureBox1.BackColor = System.Drawing.Color.White;
 			this.pictureBox1.Image = global::BentoSystemWinform.Properties.Resources.StoreLogo;
 			this.pictureBox1.Location = new System.Drawing.Point(442, 263);
 			this.pictureBox1.Name = "pictureBox1";
@@ -47,12 +47,12 @@
 			// 
 			// richTextBox1
 			// 
-			this.richTextBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+			this.richTextBox1.BackColor = System.Drawing.Color.White;
 			this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.richTextBox1.Enabled = false;
 			this.richTextBox1.Font = new System.Drawing.Font("jf open 粉圓 2.1", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.richTextBox1.Location = new System.Drawing.Point(126, 67);
 			this.richTextBox1.Name = "richTextBox1";
+			this.richTextBox1.ReadOnly = true;
 			this.richTextBox1.Size = new System.Drawing.Size(420, 295);
 			this.richTextBox1.TabIndex = 0;
 			this.richTextBox1.Text = resources.GetString("richTextBox1.Text");

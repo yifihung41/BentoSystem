@@ -30,7 +30,7 @@
 		{
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OrderForm));
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.pictureBox2 = new System.Windows.Forms.PictureBox();
 			this.btnLogout = new System.Windows.Forms.Button();
@@ -53,6 +53,7 @@
 			this.rbtnPickup = new System.Windows.Forms.RadioButton();
 			this.rbtnDelivery = new System.Windows.Forms.RadioButton();
 			this.gbOrderChoose = new System.Windows.Forms.GroupBox();
+			this.label2 = new System.Windows.Forms.Label();
 			this.dgvProductList = new System.Windows.Forms.DataGridView();
 			this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ProductPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -80,13 +81,11 @@
 			this.labelSubTotalTitle = new System.Windows.Forms.Label();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.btnSubmitOrder = new System.Windows.Forms.Button();
-			this.btnOrderPre = new System.Windows.Forms.Button();
 			this.btnOrderMemberCheck = new System.Windows.Forms.Button();
-			this.label1 = new System.Windows.Forms.Label();
 			this.btnExit = new System.Windows.Forms.Button();
 			this.pictureBox3 = new System.Windows.Forms.PictureBox();
 			this.timer1 = new System.Windows.Forms.Timer(this.components);
-			this.label2 = new System.Windows.Forms.Label();
+			this.label1 = new System.Windows.Forms.Label();
 			this.panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -383,10 +382,20 @@
 			this.gbOrderChoose.TabStop = false;
 			this.gbOrderChoose.Text = "餐點選擇";
 			// 
+			// label2
+			// 
+			this.label2.AutoSize = true;
+			this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+			this.label2.Location = new System.Drawing.Point(11, 230);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(338, 17);
+			this.label2.TabIndex = 6;
+			this.label2.Text = "＊每個便當均附紫菜蛋花湯、珍珠奶茶和焦糖布丁";
+			// 
 			// dgvProductList
 			// 
-			dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-			this.dgvProductList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+			dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+			this.dgvProductList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
 			this.dgvProductList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -612,11 +621,8 @@
 			// 
 			// tableLayoutPanel1
 			// 
-			this.tableLayoutPanel1.ColumnCount = 2;
+			this.tableLayoutPanel1.ColumnCount = 1;
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel1.Controls.Add(this.btnSubmitOrder, 1, 1);
-			this.tableLayoutPanel1.Controls.Add(this.btnOrderPre, 1, 0);
 			this.tableLayoutPanel1.Controls.Add(this.btnOrderMemberCheck, 0, 0);
 			this.tableLayoutPanel1.Controls.Add(this.label1, 0, 1);
 			this.tableLayoutPanel1.Location = new System.Drawing.Point(690, 459);
@@ -624,7 +630,7 @@
 			this.tableLayoutPanel1.RowCount = 2;
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel1.Size = new System.Drawing.Size(297, 138);
+			this.tableLayoutPanel1.Size = new System.Drawing.Size(147, 138);
 			this.tableLayoutPanel1.TabIndex = 28;
 			// 
 			// btnSubmitOrder
@@ -634,28 +640,13 @@
 			this.btnSubmitOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnSubmitOrder.Font = new System.Drawing.Font("jf open 粉圓 2.1", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.btnSubmitOrder.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(254)))), ((int)(((byte)(254)))));
-			this.btnSubmitOrder.Location = new System.Drawing.Point(151, 72);
+			this.btnSubmitOrder.Location = new System.Drawing.Point(847, 462);
 			this.btnSubmitOrder.Name = "btnSubmitOrder";
-			this.btnSubmitOrder.Size = new System.Drawing.Size(143, 63);
+			this.btnSubmitOrder.Size = new System.Drawing.Size(143, 135);
 			this.btnSubmitOrder.TabIndex = 29;
 			this.btnSubmitOrder.Text = "送出訂單";
 			this.btnSubmitOrder.UseVisualStyleBackColor = false;
 			this.btnSubmitOrder.Click += new System.EventHandler(this.btnSubmitOrder_Click);
-			// 
-			// btnOrderPre
-			// 
-			this.btnOrderPre.BackColor = System.Drawing.Color.Pink;
-			this.btnOrderPre.FlatAppearance.BorderSize = 0;
-			this.btnOrderPre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnOrderPre.Font = new System.Drawing.Font("jf open 粉圓 2.1", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.btnOrderPre.ForeColor = System.Drawing.Color.Black;
-			this.btnOrderPre.Location = new System.Drawing.Point(151, 3);
-			this.btnOrderPre.Name = "btnOrderPre";
-			this.btnOrderPre.Size = new System.Drawing.Size(142, 63);
-			this.btnOrderPre.TabIndex = 28;
-			this.btnOrderPre.Text = "訂單預覽";
-			this.btnOrderPre.UseVisualStyleBackColor = false;
-			this.btnOrderPre.Click += new System.EventHandler(this.btnOrderPreview_Click);
 			// 
 			// btnOrderMemberCheck
 			// 
@@ -666,27 +657,11 @@
 			this.btnOrderMemberCheck.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(254)))), ((int)(((byte)(254)))));
 			this.btnOrderMemberCheck.Location = new System.Drawing.Point(3, 3);
 			this.btnOrderMemberCheck.Name = "btnOrderMemberCheck";
-			this.btnOrderMemberCheck.Size = new System.Drawing.Size(142, 63);
+			this.btnOrderMemberCheck.Size = new System.Drawing.Size(141, 63);
 			this.btnOrderMemberCheck.TabIndex = 30;
 			this.btnOrderMemberCheck.Text = "點數確認";
 			this.btnOrderMemberCheck.UseVisualStyleBackColor = false;
 			this.btnOrderMemberCheck.Click += new System.EventHandler(this.btnPointCheck_Click);
-			// 
-			// label1
-			// 
-			this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.label1.AutoSize = true;
-			this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-			this.label1.Font = new System.Drawing.Font("jf open 粉圓 2.1", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.label1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-			this.label1.Location = new System.Drawing.Point(3, 69);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(142, 69);
-			this.label1.TabIndex = 31;
-			this.label1.Text = "【壽星我最大活動】\r\n會員生日\r\n當月均打８折\r\n當天完全免費(限一筆)\r\n";
-			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// btnExit
 			// 
@@ -711,15 +686,21 @@
 			this.pictureBox3.TabIndex = 22;
 			this.pictureBox3.TabStop = false;
 			// 
-			// label2
+			// label1
 			// 
-			this.label2.AutoSize = true;
-			this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-			this.label2.Location = new System.Drawing.Point(11, 230);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(338, 17);
-			this.label2.TabIndex = 6;
-			this.label2.Text = "＊每個便當均附紫菜蛋花湯、珍珠奶茶和焦糖布丁";
+			this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.label1.AutoSize = true;
+			this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+			this.label1.Font = new System.Drawing.Font("jf open 粉圓 2.1", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.label1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+			this.label1.Location = new System.Drawing.Point(3, 69);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(141, 69);
+			this.label1.TabIndex = 31;
+			this.label1.Text = "【消費百元累積1點】\r\n【壽星我最大活動】\r\n會員生日當月均打８折\r\n當天完全免費(限1筆)\r\n";
+			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// OrderForm
 			// 
@@ -727,6 +708,7 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(254)))), ((int)(((byte)(254)))));
 			this.ClientSize = new System.Drawing.Size(1033, 629);
+			this.Controls.Add(this.btnSubmitOrder);
 			this.Controls.Add(this.tableLayoutPanel1);
 			this.Controls.Add(this.gbOrderAmount);
 			this.Controls.Add(this.gbOrderChoose);
@@ -813,7 +795,6 @@
 		private System.Windows.Forms.Label labelTotal;
 		private System.Windows.Forms.Label labelDiscount;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-		private System.Windows.Forms.Button btnOrderPre;
 		private System.Windows.Forms.Button btnOrderMemberCheck;
 		private System.Windows.Forms.ComboBox cbMemberList;
 		private System.Windows.Forms.RadioButton rbtnDelivery;
@@ -824,11 +805,11 @@
 		private System.Windows.Forms.Button btnOrderAdd;
 		private System.Windows.Forms.Panel panel2;
 		private System.Windows.Forms.Button btnSubmitOrder;
-		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ProductPrice;
 		private System.Windows.Forms.DataGridViewTextBoxColumn StockQuantity;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ProductDesc;
 		private System.Windows.Forms.Label label2;
+		private System.Windows.Forms.Label label1;
 	}
 }

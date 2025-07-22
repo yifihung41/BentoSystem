@@ -29,24 +29,25 @@
 		private void InitializeComponent()
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OrderLastCheckForm));
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.gbOrderLastCheck = new System.Windows.Forms.GroupBox();
+			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+			this.labelTotalAmount = new System.Windows.Forms.Label();
 			this.lblEarnedPoints = new System.Windows.Forms.Label();
-			this.lblOrderTime = new System.Windows.Forms.Label();
-			this.lblOrderType = new System.Windows.Forms.Label();
-			this.lblCustomerPhone = new System.Windows.Forms.Label();
-			this.lblCustomerName = new System.Windows.Forms.Label();
+			this.lblUpdatedPoints = new System.Windows.Forms.Label();
 			this.labelMode = new System.Windows.Forms.Label();
 			this.btnSubmit = new System.Windows.Forms.Button();
 			this.btnBack = new System.Windows.Forms.Button();
-			this.labelTotalAmount = new System.Windows.Forms.Label();
 			this.dgvOrderDetails = new System.Windows.Forms.DataGridView();
-			this.lblUpdatedPoints = new System.Windows.Forms.Label();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+			this.lblCustomerName = new System.Windows.Forms.Label();
+			this.lblCustomerPhone = new System.Windows.Forms.Label();
+			this.lblOrderTime = new System.Windows.Forms.Label();
+			this.lblOrderType = new System.Windows.Forms.Label();
 			this.gbOrderLastCheck.SuspendLayout();
+			this.tableLayoutPanel2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvOrderDetails)).BeginInit();
 			this.tableLayoutPanel1.SuspendLayout();
-			this.tableLayoutPanel2.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// gbOrderLastCheck
@@ -64,6 +65,34 @@
 			this.gbOrderLastCheck.TabIndex = 0;
 			this.gbOrderLastCheck.TabStop = false;
 			// 
+			// tableLayoutPanel2
+			// 
+			this.tableLayoutPanel2.ColumnCount = 1;
+			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tableLayoutPanel2.Controls.Add(this.labelTotalAmount, 0, 0);
+			this.tableLayoutPanel2.Controls.Add(this.lblEarnedPoints, 0, 1);
+			this.tableLayoutPanel2.Controls.Add(this.lblUpdatedPoints, 0, 2);
+			this.tableLayoutPanel2.Location = new System.Drawing.Point(28, 314);
+			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+			this.tableLayoutPanel2.RowCount = 3;
+			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+			this.tableLayoutPanel2.Size = new System.Drawing.Size(376, 100);
+			this.tableLayoutPanel2.TabIndex = 15;
+			// 
+			// labelTotalAmount
+			// 
+			this.labelTotalAmount.AutoSize = true;
+			this.labelTotalAmount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(140)))), ((int)(((byte)(33)))));
+			this.labelTotalAmount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(254)))), ((int)(((byte)(254)))));
+			this.labelTotalAmount.Location = new System.Drawing.Point(3, 0);
+			this.labelTotalAmount.Name = "labelTotalAmount";
+			this.labelTotalAmount.Size = new System.Drawing.Size(67, 22);
+			this.labelTotalAmount.TabIndex = 4;
+			this.labelTotalAmount.Text = "總金額";
+			this.labelTotalAmount.Click += new System.EventHandler(this.labelTotalAmount_Click);
+			// 
 			// lblEarnedPoints
 			// 
 			this.lblEarnedPoints.AutoSize = true;
@@ -74,45 +103,15 @@
 			this.lblEarnedPoints.TabIndex = 12;
 			this.lblEarnedPoints.Text = "label5";
 			// 
-			// lblOrderTime
+			// lblUpdatedPoints
 			// 
-			this.lblOrderTime.AutoSize = true;
-			this.lblOrderTime.BackColor = System.Drawing.Color.Transparent;
-			this.lblOrderTime.Location = new System.Drawing.Point(3, 90);
-			this.lblOrderTime.Name = "lblOrderTime";
-			this.lblOrderTime.Size = new System.Drawing.Size(65, 22);
-			this.lblOrderTime.TabIndex = 11;
-			this.lblOrderTime.Text = "label4";
-			// 
-			// lblOrderType
-			// 
-			this.lblOrderType.AutoSize = true;
-			this.lblOrderType.BackColor = System.Drawing.Color.Transparent;
-			this.lblOrderType.Location = new System.Drawing.Point(3, 60);
-			this.lblOrderType.Name = "lblOrderType";
-			this.lblOrderType.Size = new System.Drawing.Size(65, 22);
-			this.lblOrderType.TabIndex = 10;
-			this.lblOrderType.Text = "label3";
-			// 
-			// lblCustomerPhone
-			// 
-			this.lblCustomerPhone.AutoSize = true;
-			this.lblCustomerPhone.BackColor = System.Drawing.Color.Transparent;
-			this.lblCustomerPhone.Location = new System.Drawing.Point(3, 30);
-			this.lblCustomerPhone.Name = "lblCustomerPhone";
-			this.lblCustomerPhone.Size = new System.Drawing.Size(65, 22);
-			this.lblCustomerPhone.TabIndex = 9;
-			this.lblCustomerPhone.Text = "label2";
-			// 
-			// lblCustomerName
-			// 
-			this.lblCustomerName.AutoSize = true;
-			this.lblCustomerName.BackColor = System.Drawing.Color.Transparent;
-			this.lblCustomerName.Location = new System.Drawing.Point(3, 0);
-			this.lblCustomerName.Name = "lblCustomerName";
-			this.lblCustomerName.Size = new System.Drawing.Size(65, 22);
-			this.lblCustomerName.TabIndex = 8;
-			this.lblCustomerName.Text = "label1";
+			this.lblUpdatedPoints.AutoSize = true;
+			this.lblUpdatedPoints.BackColor = System.Drawing.Color.Transparent;
+			this.lblUpdatedPoints.Location = new System.Drawing.Point(3, 66);
+			this.lblUpdatedPoints.Name = "lblUpdatedPoints";
+			this.lblUpdatedPoints.Size = new System.Drawing.Size(71, 22);
+			this.lblUpdatedPoints.TabIndex = 13;
+			this.lblUpdatedPoints.Text = "Label6";
 			// 
 			// labelMode
 			// 
@@ -160,22 +159,12 @@
 			this.btnBack.UseVisualStyleBackColor = false;
 			this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
 			// 
-			// labelTotalAmount
-			// 
-			this.labelTotalAmount.AutoSize = true;
-			this.labelTotalAmount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(140)))), ((int)(((byte)(33)))));
-			this.labelTotalAmount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(254)))), ((int)(((byte)(254)))));
-			this.labelTotalAmount.Location = new System.Drawing.Point(3, 0);
-			this.labelTotalAmount.Name = "labelTotalAmount";
-			this.labelTotalAmount.Size = new System.Drawing.Size(67, 22);
-			this.labelTotalAmount.TabIndex = 4;
-			this.labelTotalAmount.Text = "總金額";
-			this.labelTotalAmount.Click += new System.EventHandler(this.labelTotalAmount_Click);
-			// 
 			// dgvOrderDetails
 			// 
 			this.dgvOrderDetails.AllowUserToAddRows = false;
 			this.dgvOrderDetails.AllowUserToDeleteRows = false;
+			dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+			this.dgvOrderDetails.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
 			this.dgvOrderDetails.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
 			this.dgvOrderDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgvOrderDetails.Location = new System.Drawing.Point(28, 151);
@@ -185,16 +174,6 @@
 			this.dgvOrderDetails.Size = new System.Drawing.Size(376, 163);
 			this.dgvOrderDetails.TabIndex = 0;
 			this.dgvOrderDetails.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOrderDetails_CellContentClick);
-			// 
-			// lblUpdatedPoints
-			// 
-			this.lblUpdatedPoints.AutoSize = true;
-			this.lblUpdatedPoints.BackColor = System.Drawing.Color.Transparent;
-			this.lblUpdatedPoints.Location = new System.Drawing.Point(3, 66);
-			this.lblUpdatedPoints.Name = "lblUpdatedPoints";
-			this.lblUpdatedPoints.Size = new System.Drawing.Size(71, 22);
-			this.lblUpdatedPoints.TabIndex = 13;
-			this.lblUpdatedPoints.Text = "Label6";
 			// 
 			// tableLayoutPanel1
 			// 
@@ -214,21 +193,45 @@
 			this.tableLayoutPanel1.Size = new System.Drawing.Size(376, 123);
 			this.tableLayoutPanel1.TabIndex = 14;
 			// 
-			// tableLayoutPanel2
+			// lblCustomerName
 			// 
-			this.tableLayoutPanel2.ColumnCount = 1;
-			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tableLayoutPanel2.Controls.Add(this.labelTotalAmount, 0, 0);
-			this.tableLayoutPanel2.Controls.Add(this.lblEarnedPoints, 0, 1);
-			this.tableLayoutPanel2.Controls.Add(this.lblUpdatedPoints, 0, 2);
-			this.tableLayoutPanel2.Location = new System.Drawing.Point(28, 314);
-			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-			this.tableLayoutPanel2.RowCount = 3;
-			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-			this.tableLayoutPanel2.Size = new System.Drawing.Size(376, 100);
-			this.tableLayoutPanel2.TabIndex = 15;
+			this.lblCustomerName.AutoSize = true;
+			this.lblCustomerName.BackColor = System.Drawing.Color.Transparent;
+			this.lblCustomerName.Location = new System.Drawing.Point(3, 0);
+			this.lblCustomerName.Name = "lblCustomerName";
+			this.lblCustomerName.Size = new System.Drawing.Size(65, 22);
+			this.lblCustomerName.TabIndex = 8;
+			this.lblCustomerName.Text = "label1";
+			// 
+			// lblCustomerPhone
+			// 
+			this.lblCustomerPhone.AutoSize = true;
+			this.lblCustomerPhone.BackColor = System.Drawing.Color.Transparent;
+			this.lblCustomerPhone.Location = new System.Drawing.Point(3, 30);
+			this.lblCustomerPhone.Name = "lblCustomerPhone";
+			this.lblCustomerPhone.Size = new System.Drawing.Size(65, 22);
+			this.lblCustomerPhone.TabIndex = 9;
+			this.lblCustomerPhone.Text = "label2";
+			// 
+			// lblOrderTime
+			// 
+			this.lblOrderTime.AutoSize = true;
+			this.lblOrderTime.BackColor = System.Drawing.Color.Transparent;
+			this.lblOrderTime.Location = new System.Drawing.Point(3, 90);
+			this.lblOrderTime.Name = "lblOrderTime";
+			this.lblOrderTime.Size = new System.Drawing.Size(65, 22);
+			this.lblOrderTime.TabIndex = 11;
+			this.lblOrderTime.Text = "label4";
+			// 
+			// lblOrderType
+			// 
+			this.lblOrderType.AutoSize = true;
+			this.lblOrderType.BackColor = System.Drawing.Color.Transparent;
+			this.lblOrderType.Location = new System.Drawing.Point(3, 60);
+			this.lblOrderType.Name = "lblOrderType";
+			this.lblOrderType.Size = new System.Drawing.Size(65, 22);
+			this.lblOrderType.TabIndex = 10;
+			this.lblOrderType.Text = "label3";
 			// 
 			// OrderLastCheckForm
 			// 
@@ -247,11 +250,11 @@
 			this.Text = "阿萱便當後臺系統：訂單預覽／確認";
 			this.gbOrderLastCheck.ResumeLayout(false);
 			this.gbOrderLastCheck.PerformLayout();
+			this.tableLayoutPanel2.ResumeLayout(false);
+			this.tableLayoutPanel2.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvOrderDetails)).EndInit();
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.tableLayoutPanel1.PerformLayout();
-			this.tableLayoutPanel2.ResumeLayout(false);
-			this.tableLayoutPanel2.PerformLayout();
 			this.ResumeLayout(false);
 
 		}

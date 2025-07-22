@@ -406,23 +406,27 @@ namespace BentoSystemWinform
 
 			ProductBLL Pbll = new ProductBLL();
 
-			if (string.IsNullOrEmpty(txtProductId.Text))
+			if (string.IsNullOrEmpty(txtProductId.Text)) // 新增
 			{
 				Pbll.AddProduct(product);
 				MessageBox.Show("新增成功！");
+				LoadProducts();
+				ClearInputFields();
 			}
-			else
+			else // 修改
 			{
 				product.ProductId = int.Parse(txtProductId.Text);
 				Pbll.UpdateProduct(product);
 				MessageBox.Show("修改成功！");
-			}
+				LoadProducts();
 
-			LoadProducts();
-			
-			ClearInputFields();
-			selectedImagePath = "";
-			pbProductImage.Image = null;
+				// 修改後重新顯示圖片
+				if (!string.IsNullOrEmpty(product.ImagePath) && File.Exists(product.ImagePath))
+				{
+					pbProductImage.Image = Image.FromFile(product.ImagePath);
+					selectedImagePath = product.ImagePath;
+				}
+			}
 		}
 
 		private void pictureBox2_Click(object sender, EventArgs e)

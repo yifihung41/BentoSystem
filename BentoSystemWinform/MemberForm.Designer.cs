@@ -293,7 +293,7 @@ namespace BentoSystemWinform
 			// btnMemberSave
 			// 
 			this.btnMemberSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(140)))), ((int)(((byte)(33)))));
-			this.btnMemberSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnMemberSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
 			this.btnMemberSave.Font = new System.Drawing.Font("jf open 粉圓 2.1", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.btnMemberSave.ForeColor = System.Drawing.Color.White;
 			this.btnMemberSave.Location = new System.Drawing.Point(924, 304);
@@ -307,7 +307,7 @@ namespace BentoSystemWinform
 			// btnMemberDelete
 			// 
 			this.btnMemberDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(140)))), ((int)(((byte)(33)))));
-			this.btnMemberDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnMemberDelete.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
 			this.btnMemberDelete.Font = new System.Drawing.Font("jf open 粉圓 2.1", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.btnMemberDelete.ForeColor = System.Drawing.Color.White;
 			this.btnMemberDelete.Location = new System.Drawing.Point(838, 304);
@@ -321,7 +321,7 @@ namespace BentoSystemWinform
 			// btnMemberUpdate
 			// 
 			this.btnMemberUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(140)))), ((int)(((byte)(33)))));
-			this.btnMemberUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnMemberUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
 			this.btnMemberUpdate.Font = new System.Drawing.Font("jf open 粉圓 2.1", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.btnMemberUpdate.ForeColor = System.Drawing.Color.White;
 			this.btnMemberUpdate.Location = new System.Drawing.Point(752, 304);
@@ -335,7 +335,7 @@ namespace BentoSystemWinform
 			// btnMemberAdd
 			// 
 			this.btnMemberAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(140)))), ((int)(((byte)(33)))));
-			this.btnMemberAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnMemberAdd.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
 			this.btnMemberAdd.Font = new System.Drawing.Font("jf open 粉圓 2.1", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.btnMemberAdd.ForeColor = System.Drawing.Color.White;
 			this.btnMemberAdd.Location = new System.Drawing.Point(666, 304);

@@ -30,8 +30,8 @@
 		{
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductsForm));
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.pictureBox2 = new System.Windows.Forms.PictureBox();
 			this.btnLogout = new System.Windows.Forms.Button();
@@ -291,7 +291,7 @@
 			// 
 			this.btnProductImageUpload.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(140)))), ((int)(((byte)(33)))));
 			this.btnProductImageUpload.FlatAppearance.BorderColor = System.Drawing.Color.White;
-			this.btnProductImageUpload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnProductImageUpload.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
 			this.btnProductImageUpload.Font = new System.Drawing.Font("jf open 粉圓 2.1", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.btnProductImageUpload.ForeColor = System.Drawing.Color.White;
 			this.btnProductImageUpload.Location = new System.Drawing.Point(635, 207);
@@ -406,7 +406,7 @@
 			// btnProductAdd
 			// 
 			this.btnProductAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(140)))), ((int)(((byte)(33)))));
-			this.btnProductAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnProductAdd.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
 			this.btnProductAdd.Font = new System.Drawing.Font("jf open 粉圓 2.1", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.btnProductAdd.ForeColor = System.Drawing.Color.White;
 			this.btnProductAdd.Location = new System.Drawing.Point(666, 304);
@@ -420,7 +420,7 @@
 			// btnProductUpdate
 			// 
 			this.btnProductUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(140)))), ((int)(((byte)(33)))));
-			this.btnProductUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnProductUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
 			this.btnProductUpdate.Font = new System.Drawing.Font("jf open 粉圓 2.1", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.btnProductUpdate.ForeColor = System.Drawing.Color.White;
 			this.btnProductUpdate.Location = new System.Drawing.Point(752, 304);
@@ -434,7 +434,7 @@
 			// btnProductDelete
 			// 
 			this.btnProductDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(140)))), ((int)(((byte)(33)))));
-			this.btnProductDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnProductDelete.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
 			this.btnProductDelete.Font = new System.Drawing.Font("jf open 粉圓 2.1", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.btnProductDelete.ForeColor = System.Drawing.Color.White;
 			this.btnProductDelete.Location = new System.Drawing.Point(838, 304);
@@ -448,7 +448,7 @@
 			// btnProductSave
 			// 
 			this.btnProductSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(140)))), ((int)(((byte)(33)))));
-			this.btnProductSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnProductSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
 			this.btnProductSave.Font = new System.Drawing.Font("jf open 粉圓 2.1", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.btnProductSave.ForeColor = System.Drawing.Color.White;
 			this.btnProductSave.Location = new System.Drawing.Point(924, 304);
@@ -494,18 +494,18 @@
 			// 
 			// dgvProduct
 			// 
-			dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-			this.dgvProduct.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+			dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+			this.dgvProduct.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
 			this.dgvProduct.BackgroundColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle4.Font = new System.Drawing.Font("jf open 粉圓 2.1", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle4.NullValue = "無";
-			dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dgvProduct.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle2.Font = new System.Drawing.Font("jf open 粉圓 2.1", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle2.NullValue = "無";
+			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dgvProduct.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
 			this.dgvProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgvProduct.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ProductId,

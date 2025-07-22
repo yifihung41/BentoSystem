@@ -250,15 +250,8 @@ namespace BentoSystemWinform
 			}
 		}
 	
-
-
-
-
 		//選擇區：建立暫存訂單項目
 		List<OrderItemTempModel> currentOrderItems;
-
-
-
 
 		private void btnOrderAdd_Click(object sender, EventArgs e)
 		{
@@ -361,10 +354,12 @@ namespace BentoSystemWinform
 			DateTime now = DateTime.Now;
 
 			decimal subtotal = currentOrderItems.Sum(x => x.Subtotal);
-
 			decimal discount = 0m;
+			decimal Total = subtotal;
+			// 總金額
 			int PointsEarned = 0;
 			int UpdatedPoints = 0;
+			
 
 			// 如果是會員，計算折扣和點數
 			if (rbtnIsMember.Checked && cbMemberList.SelectedItem is MemberModel member)
@@ -373,17 +368,20 @@ namespace BentoSystemWinform
 				if (member.Birthday.Month == now.Month)
 					discount = subtotal * 0.2m;
 
+				decimal total = subtotal - discount;
+				Total = total;
+
 				// 計算每100元1點
-				PointsEarned = (int)(subtotal / 100);
-				UpdatedPoints = member.Points;  // 取得會員現有點數
+				PointsEarned = (int)(total / 100);
+				UpdatedPoints = UpdatedPoints = member.Points + PointsEarned; ;  // 取得會員現有點數
 			}
 
-			decimal total = subtotal - discount;
+			
 
 			// 傳遞資料至訂單確認視窗
 			var confirmForm = new BentoSystemWinform.OrderLastCheckForm(
 				currentOrderItems,
-				total,
+				Total,
 				name,
 				phone,
 				type,
@@ -397,7 +395,7 @@ namespace BentoSystemWinform
 			if (result == DialogResult.OK)
 			{
 				// 送出訂單至資料庫
-				SaveOrderToDatabase(now, type, total, discount);
+				SaveOrderToDatabase(now, type, Total, discount);
 				MessageBox.Show("訂單送出成功！", "成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				ClearOrderForm();  // 呼叫清空頁面
 			}
@@ -417,59 +415,59 @@ namespace BentoSystemWinform
 		}
 
 		//右下：訂單預覽按鈕
-		private void btnOrderPreview_Click(object sender, EventArgs e)
-		{
-			if (currentOrderItems == null || currentOrderItems.Count == 0)
-			{
-				MessageBox.Show("目前訂單沒有任何品項", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-				return;
-			}
+		//private void btnOrderPreview_Click(object sender, EventArgs e)
+		//{
+		//	if (currentOrderItems == null || currentOrderItems.Count == 0)
+		//	{
+		//		MessageBox.Show("目前訂單沒有任何品項", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+		//		return;
+		//	}
 
-			decimal subtotal = currentOrderItems.Sum(x => x.ProductPrice * x.Quantity);  // 計算小計
-			decimal discount = 0m;
+		//	decimal subtotal = currentOrderItems.Sum(x => x.ProductPrice * x.Quantity);  // 計算小計
+		//	decimal discount = 0m;
 
-			// 檢查是否為會員且是否有折扣
-			if (rbtnIsMember.Checked && cbMemberList.SelectedItem is MemberModel member)
-			{
-				if (member.Birthday.Month == DateTime.Now.Month)
-				{
-					// 生日月八折
-					discount = subtotal * 0.2m;
+		//	// 檢查是否為會員且是否有折扣
+		//	if (rbtnIsMember.Checked && cbMemberList.SelectedItem is MemberModel member)
+		//	{
+		//		if (member.Birthday.Month == DateTime.Now.Month)
+		//		{
+		//			// 生日月八折
+		//			discount = subtotal * 0.2m;
 
-				}
-			}
+		//		}
+		//	}
 
-			// 扣除折扣後的總金額
-			decimal total = subtotal - discount;            // 取得會員/非會員資料
-			string name = rbtnIsMember.Checked && cbMemberList.SelectedItem is MemberModel m ? m.MemberName : txtInsertOrderName.Text.Trim();
-			string phone = txtOrderPhone.Text.Trim();
-			string Ordertype = rbtnDelivery.Checked ? "外送" : "自取";
-			DateTime now = DateTime.Now;
+		//	// 扣除折扣後的總金額
+		//	decimal total = subtotal - discount;            // 取得會員/非會員資料
+		//	string name = rbtnIsMember.Checked && cbMemberList.SelectedItem is MemberModel m ? m.MemberName : txtInsertOrderName.Text.Trim();
+		//	string phone = txtOrderPhone.Text.Trim();
+		//	string Ordertype = rbtnDelivery.Checked ? "外送" : "自取";
+		//	DateTime now = DateTime.Now;
 
-			// 計算會員獲得的點數（若是會員）
-			int PointsEarned = 0;
-			int UpdatedPoints = 0;
-			if (rbtnIsMember.Checked && cbMemberList.SelectedItem is MemberModel memberM)
-			{
-				PointsEarned = (int)(subtotal / 100);  // 每100元1點
-				UpdatedPoints = memberM.Points - PointsEarned;       // 取得目前會員點數
-			}
+		//	// 計算會員獲得的點數（若是會員）
+		//	int PointsEarned = 0;
+		//	int UpdatedPoints = 0;
+		//	if (rbtnIsMember.Checked && cbMemberList.SelectedItem is MemberModel memberM)
+		//	{
+		//		PointsEarned = (int)(subtotal / 100);  // 每100元1點
+		//		UpdatedPoints = memberM.Points - PointsEarned;       // 取得目前會員點數
+		//	}
 
-			// 使用新建構子並傳入所有參數
-			var previewForm = new OrderLastCheckForm(
-				currentOrderItems,
-				subtotal,
-				name,
-				phone,
-				Ordertype,
-				now,
-				PointsEarned,
-				UpdatedPoints,
-				allowSubmit: false);  // 預覽模式，不可送出
+		//	// 使用新建構子並傳入所有參數
+		//	var previewForm = new OrderLastCheckForm(
+		//		currentOrderItems,
+		//		subtotal,
+		//		name,
+		//		phone,
+		//		Ordertype,
+		//		now,
+		//		PointsEarned,
+		//		UpdatedPoints,
+		//		allowSubmit: false);  // 預覽模式，不可送出
 
-			// 顯示預覽視窗
-			previewForm.ShowDialog();
-		}
+		//	// 顯示預覽視窗
+		//	previewForm.ShowDialog();
+		//}
 
 		private void SaveOrderToDatabase(DateTime orderDate, string orderType, decimal total, decimal discount)
 		{
@@ -507,7 +505,6 @@ namespace BentoSystemWinform
 				memberDAL.AddPointsToMember(memberId, pointEarned); // 更新點數
 			}
 
-			MessageBox.Show("訂單已成功送出！");
 
 			// 還原會員身份
 			bool wasMember = rbtnIsMember.Checked;
@@ -646,7 +643,7 @@ namespace BentoSystemWinform
 			txtOrderPhone.Clear(); // 清除電話欄
 
 			// 初始化時間顯示（每秒更新）
-			timerTime.Interval = 1000;
+			timerTime.Interval = 2000;
 			timerTime.Tick += timerOrderTime_Tick;
 			timerTime.Start();
 
@@ -715,9 +712,12 @@ namespace BentoSystemWinform
 			rbtnDelivery.Checked = false;
 			rbtnPickup.Checked = false;
 
-			// 清空餐點列表（依你的DataGridView名稱調整）
-			dgvProductList.Refresh(); // 重新載入商品清單
+			// 重新載入商品清單
+			dgvProductList.Refresh();
 
+			// 重置數量選擇器
+			nudQuantity.Value = nudQuantity.Minimum;
+			
 			// 重置價格顯示區
 			labelSubtotal.Text = "0 元";
 			labelDiscount.Text = "無折扣";
